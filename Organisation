@@ -1,6 +1,6 @@
 Fonctionnalité 1 : 
   Sprint 0 : Grille du jeu  
-    cree_grille() [Niels], effacer_ligne(i) [Samuel], genere_piece, detecte_ligne
+    cree_grille() [Niels], effacer_ligne(game_grid, i) [Samuel], genere_piece, detecte_ligne(game_grid, i) [Samuel]
     
   Sprint 1 : Déplacements
     rotation, déplacement_droite, déplacement_gauche, déplacement_bas, detecte_piece
