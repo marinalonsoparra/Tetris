@@ -99,7 +99,7 @@ def rotation(grille,piece):
         piece[1]+=1
     while superposition(piece,grille) :
             piece[0]-=1
-    return piece_copy
+    return piece
 
 
 def superposition(piece,grille) :
