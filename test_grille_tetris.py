@@ -8,9 +8,9 @@ def test_creer_grille():
 
 def test_detecte_ligne():
     grille=[[1  for i in range (0,10)] for j in range (0,22)]
-    assert detecte_ligne(grille,4)==True
+    assert detecte_ligne(grille)==[i for i in range(0,22)]
     grille_2=[[0  for i in range (0,10)] for j in range (0,22)]
-    assert detecte_ligne(grille,5)==False
+    assert detecte_ligne(grille)==[]
 
 
 def test_effacer_ligne():
@@ -26,7 +26,12 @@ def test_effacer_ligne():
 
 def test_generate_piece():
 
-def
+def test_ligne_pleine():
+    grille=[[1  for i in range (0,10)] for j in range (0,22)]
+    assert ligne_pleine(grille,5)== True
+    grille_2=[[0  for i in range (0,10)] for j in range (0,22)]
+    assert detecte_ligne(grille, 4)==False
+
 
 
 
