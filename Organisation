@@ -1,5 +1,7 @@
 Fonctionnalité 1 :
+create_grid():
+créer une grille vide
+create_piece()
+
 
 Fonctionnalité 2 :
-
-Si ça marche
