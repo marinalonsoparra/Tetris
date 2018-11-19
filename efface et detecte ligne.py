@@ -1,6 +1,6 @@
 # efface la ligne i de la grille et crée une nouvelle ligne en haut de la grille
 def effacer_ligne(grille, i): 
-    a = grille.pop(i)
+    del grille[i]
     grille = [[0 for i in range(10)]] + grille
     return grille
 
@@ -8,7 +8,7 @@ def effacer_ligne(grille, i):
 # regarde si la ligne i de la grille est pleine
 def ligne_pleine(grille, i):
     for k in range(len(grille[i])):
-        if grille_liste[i][k] == 0:
+        if grille[i][k] == 0:
             return False
     return True
 
