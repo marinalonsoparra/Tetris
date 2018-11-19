@@ -1,5 +1,5 @@
 import numpy as np
-from Tetrix.grille_de_jeu import *
+from grille_de_jeu import *
 
 a = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],

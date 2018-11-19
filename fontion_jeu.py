@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from time import*
 import numpy as np
 
@@ -9,6 +12,6 @@ def test_fin_jeu (grille) :
     return True
 
 
-def horloge(n,difficulté) :
-    sleep(max(0.2,1-difficulté/(difficulté+1+n)))
+def horloge(n, difficulte) :
+    sleep(max(0.2, 1 - difficulte / (difficulte + 1 + n)))
 
