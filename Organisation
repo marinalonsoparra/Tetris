@@ -1,9 +1,12 @@
 Fonctionnalité 1 :
-  Sprint 1 : Grille du jeu
-  
-  
-  Sprint 2 : 
-  
+  Sprint 0 : Grille du jeu
+    crée_grille
+    
+  Sprint 1 : Déplacements
+    rotation, déplacement droite, déplac
   
 Fonctionnalité 2 :
+  Sprint 0 : Création d'une interface graphique
+    
   
+  Sprint 1 : Autres fonctionnalités
