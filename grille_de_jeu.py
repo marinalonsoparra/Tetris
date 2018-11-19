@@ -42,7 +42,7 @@ def traitement_grille(grille):
         grille_bis = effacer_ligne(grille_bis, c)
     return grille_bis
 
-#grille 22x10
+#renvoie un nouvelle piece (y=0,etat=0, x et form aleatoire
 def generer_piece():
 
     form=rd.choice([0,1,2,3,4,5,6])
