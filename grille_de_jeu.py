@@ -4,8 +4,7 @@ from pieces_etats import pieces_etat
 import random as rd
 from deplacement_tetris import *
 
-def cree_grille() :
-    return np.zeros((22,10))
+
 
 def cree_grille() :
     return np.zeros((22,10)).tolist()
