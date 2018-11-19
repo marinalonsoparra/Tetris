@@ -28,7 +28,8 @@ def detecte_ligne(grille):
 
 
 # renvoie la grille après avoir supprimé les lignes pleines
-def traitement_grille(grille, score, niveau):
+def traitement_grille(grille, score, nombre_lignes_supprimees):
+    niveau = nombre_lignes_supprimees // 10
     grille_bis = copy.deepcopy(grille)
     liste_lignes_pleines = detecte_ligne(grille_bis)
     nombre_lignes_pleines = len(liste_lignes_pleines)
@@ -45,4 +46,5 @@ def traitement_grille(grille, score, niveau):
             else:
                 if nombre_lignes_pleines == 4:
                     score += 1200*(niveau + 1)
+    nombre_lignes_supprimees += nombre_lignes_pleines
     return(grille_bis)
