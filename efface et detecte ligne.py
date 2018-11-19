@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 # efface la ligne i de la grille et crée une nouvelle ligne en haut de la grille
 def effacer_ligne(grille, i):
     grille_bis = copy.deepcopy(grille)
