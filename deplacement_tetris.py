@@ -47,9 +47,20 @@ def coordonees(piece):
 
 def rotation(grille,piece):
     piece_copy=copy.deepcopy(grille)
-    if piece[3]
-    piece[3]+=1
+    piece[3]=(piece[3]+1)%4
+    while superposition(piece,grille) :
+        piece[1]-=1
     if position_possible(grille,piece):
         return piece
     else :
         return piece_copy
+    
+    
+   
+def superposition(piece,grille) :
+    forme_piece=dico[piece[2]][piece[3]]
+    forme=coordonees(forme_piece)
+    for i in coordonees :
+        if grille[piece[1]+i[0]][piece[0]+i[1]]!=0 :
+            return True
+    return False
