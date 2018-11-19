@@ -6,9 +6,9 @@ Fonctionnalité 1 :
     rotation(grille, piece) [Grégoire], déplacement_droite(grille, pièce) [Grégoire], déplacement_gauche(grille, pièce) [Grégoire], déplacement_bas(grille, pièce) [Grégoire], detecte_piece
     
   Sprint 2 : Fonctions jeu
-    test_fin_jeu [Niels], horloge [Niels], score [Samuel]
+    test_fin_jeu [Niels], horloge [Niels], score, [Samuel]
     
-  Fonctions test : Timo (S1: deplacement), Marine (S0: grille de jeu,S2: fonction jeu)
+  Fonctions test : Timo , Marine 
   
 Fonctionnalité 2 :
   Sprint 0 : Création d'une interface graphique tkinter
