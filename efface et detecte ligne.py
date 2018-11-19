@@ -31,14 +31,18 @@ def detecte_ligne(grille):
 def traitement_grille(grille, score, niveau):
     grille_bis = copy.deepcopy(grille)
     liste_lignes_pleines = detecte_ligne(grille_bis)
+    nombre_lignes_pleines = len(liste_lignes_pleines)
     for c in liste_lignes_pleines:
         grille_bis = effacer_ligne(grille_bis, c)
-    if len(liste_lignes_pleines) == 1:
+    if nombre_lignes_pleines == 1:
         score += 40*(niveau + 1)
-        elif len(liste_lignes_pleines) == 2:
+    else:
+        if nombre_lignes_pleines == 2:
             score += 100*(niveau + 1)
-            elif len(liste_lignes_pleines) == 3:
+        else:
+            if nombre_liste_lignes_pleines == 3:
                 score += 300*(niveau + 1)
-                elif len(liste_lignes_pleines) == 4:
+            else:
+                if nombre_lignes_pleines == 4:
                     score += 1200*(niveau + 1)
-    return grille_bis
+    return(grille_bis)
