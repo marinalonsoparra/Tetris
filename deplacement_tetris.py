@@ -74,11 +74,11 @@ def deplacement_gauche(grille,piece):
 
 def deplacement_bas(grille,piece):
     piece_copy=copy.deepcopy(grille)
-    piece_copy[0]+=1
-    if not superposition(grille,piece):
-        return piece_copy
-    else:
+    piece[0]+=1
+    if position_possible(grille,piece):
         return piece
+    else :
+        return piece_copy
 
 
 def coordonees(piece):
@@ -126,4 +126,4 @@ def depasse_gauche(piece):
     return False    
 
 
-
+def collision(piece,grille) :
