@@ -5,8 +5,8 @@ import copy
 ###pièce=[x,y,forme,état]
 
 def deplacement_droite(grille,piece):
-    piece_copy=copy.deepcopy(grille)
-    piece[0]+=1
+    piece_copy=copy.deepcopy(piece)
+    piece[1]+=1
     if position_possible(grille,piece):
         return piece
     else :
@@ -14,7 +14,7 @@ def deplacement_droite(grille,piece):
 
 
 def deplacement_gauche(grille,piece):
-    piece_copy=copy.deepcopy(grille)
+    piece_copy=copy.deepcopy(piece)
     piece[0]-=1
     if position_possible(grille,piece):
         return piece
@@ -64,3 +64,21 @@ def superposition(piece,grille) :
         if grille[piece[1]+i[0]][piece[0]+i[1]]!=0 :
             return True
     return False
+
+
+def dépasse_droit(piece):
+    coordones=coordonees(piece)
+    for i in coordones:
+        if i[1]>9:
+            return True
+    return False
+
+
+def dépasse_gauche(piece):
+    coordones=coordonees(piece)
+    for i in coordones:
+        if i[1]<0:
+            return True
+    return False    
+
+
