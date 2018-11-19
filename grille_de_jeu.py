@@ -5,7 +5,6 @@ import random as rd
 from deplacement_tetris import *
 
 
-
 def cree_grille() :
     return np.zeros((22,10)).tolist()
 
