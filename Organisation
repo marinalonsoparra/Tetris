@@ -1,6 +1,6 @@
 Fonctionnalité 1 : 
   Sprint 0 : Grille du jeu
-    cree_grille, effacer_ligne, genere_piece, detecte_
+    cree_grille, effacer_ligne, genere_piece, detecte_piece
     
   Sprint 1 : Déplacements
     rotation, déplacement_droite, déplacement_gauche, déplacement_bas
@@ -13,4 +13,4 @@ Fonctionnalité 2 :
     affichage_grille
   
   Sprint 1 : Autres fonctionnalités
-    difficulte, theme, 
+    difficulte, theme, leaderboard
