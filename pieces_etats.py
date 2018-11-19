@@ -1,6 +1,6 @@
 
 #Liste de pieces:
-#Les états tournent à droite
+#Les etats tournent a droite
 
 # * * * *
 
