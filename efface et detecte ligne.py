@@ -1,7 +1,7 @@
 # efface la ligne i de la grille et crée une nouvelle ligne en haut de la grille
 def effacer_ligne(grille, i): 
     a = grille.pop(i)
-    grille = [[0 for i in range(grille(0))]] + grille
+    grille = [[0 for i in range(10)]] + grille
     return grille
 
 
