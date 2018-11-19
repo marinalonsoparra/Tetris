@@ -1,4 +1,5 @@
-###blabla
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 import copy
 etat_piece_0={0:[(1,0),(1,1),(1,2),(1,3)],\
@@ -115,7 +116,7 @@ def superposition(piece,grille) :
     return False
 
 
-def dépasse_droit(piece):
+def depasse_droit(piece):
     coordones=coordonees(piece)
     for i in coordones:
         if i[1]>9:
@@ -123,7 +124,7 @@ def dépasse_droit(piece):
     return False
 
 
-def dépasse_gauche(piece):
+def depasse_gauche(piece):
     coordones=coordonees(piece)
     for i in coordones:
         if i[1]<0:
