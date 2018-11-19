@@ -1,4 +1,4 @@
-#
+import numpy as np
 
 import copy
 etat_piece_0={0:[(1,0),(1,1),(1,2),(1,3)],\
@@ -92,32 +92,20 @@ def coordonees(piece):
 
 
 def rotation(grille,piece):
-    piece_copy=copy.deepcopy(grille)
     piece[3]=(piece[3]+1)%4
-    while superposition(piece,grille) :
-        while depasse_droit(piece) :
-            piece[1]-=1
-        while depasse_gauche(piece) :
-            piece[1]+=1
-        piece[0]-=1
     while depasse_droit(piece) :
-        while superposition(piece,grille) :
-            piece[0]-=1
-        while depasse_gauche(piece) :
-            piece[1]+=1
         piece[1]-=1
-    if position_possible(grille,piece):
-        return piece
-    else :
-        return piece_copy
-    
-    
-   
+    while depasse_gauche(piece) :
+        piece[1]+=1
+    while superposition(piece,grille) :
+            piece[0]-=1
+    return piece
+
+
 def superposition(piece,grille) :
-    forme_piece=pieces_etat[piece[2]][piece[3]]
-    forme=coordonees(forme_piece)
-    for i in coordonees :
-        if grille[piece[1]+i[0]][piece[0]+i[1]]!=0 :
+    coord=coordonees(piece)
+    for i in coord :
+        if grille[i[0]][i[1]]!=0 :
             return True
     return False
 
@@ -138,3 +126,4 @@ def depasse_gauche(piece):
     return False    
 
 
+def collision(piece,grille) :
