@@ -3,7 +3,7 @@ Fonctionnalité 1 :
     cree_grille() [Niels], effacer_ligne(grille, i) [Samuel], genere_piece, detecte_ligne(grille, i) [Samuel]
     
   Sprint 1 : Déplacements
-    rotation, déplacement_droite [Grégoire], déplacement_gauche [Grégoire], déplacement_bas [Grégoire], detecte_piece
+    rotation(grille, piece) [Grégoire], déplacement_droite(grille, pièce) [Grégoire], déplacement_gauche(grille, pièce) [Grégoire], déplacement_bas(grille, pièce) [Grégoire], detecte_piece
     
   Sprint 2 : Fonctions jeu
     test_fin_jeu [Niels], horloge [Niels], score, 
