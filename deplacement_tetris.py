@@ -126,4 +126,4 @@ def depasse_gauche(piece):
     return False    
 
 
-def collision(piece,grille) :
+
