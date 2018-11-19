@@ -165,4 +165,4 @@ def deplacement_piece(grille, piece,deplacement):
         return piece
 
 
-def collision(piece,grille) :
+
