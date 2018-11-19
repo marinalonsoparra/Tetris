@@ -1,6 +1,3 @@
-import numpy as np
-
-
 # efface la ligne i de la grille et crée une nouvelle ligne en haut de la grille
 def effacer_ligne(grille, i): 
     a = grille.pop(i)
