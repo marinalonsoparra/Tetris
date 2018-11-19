@@ -68,7 +68,7 @@ def deplacement_droite(grille,piece):
 def deplacement_gauche(grille,piece):
     piece_copy=copy.deepcopy(piece)
     piece_copy[1]-=1
-    if  not depasse_gauche(piece) and not superposition(piece,grille):
+    if  not depasse_gauche(piece_copy) and not superposition(piece_copy,grille):
         return piece_copy
     else :
         return piece
