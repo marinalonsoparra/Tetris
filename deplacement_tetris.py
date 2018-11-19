@@ -1,4 +1,4 @@
-
+###blabla
 
 import copy
 etat_piece_0={0:[(1,0),(1,1),(1,2),(1,3)],\
