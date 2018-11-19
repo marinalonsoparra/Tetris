@@ -1,0 +1,1 @@
+def deplacement_droite
