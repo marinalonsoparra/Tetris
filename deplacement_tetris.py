@@ -100,6 +100,16 @@ def rotation(grille,piece):
     piece_copy=copy.deepcopy(grille)
     piece[3]=(piece[3]+1)%4
     while superposition(piece,grille) :
+        while depasse_droit(piece) :
+            piece[1]-=1
+        while depasse_gauche(piece) :
+            piece[1]+=1
+        piece[0]-=1
+    while depasse_droit(piece) :
+        while superposition(piece,grille) :
+            piece[0]-=1
+        while depasse_gauche(piece) :
+            piece[1]+=1
         piece[1]-=1
     if position_possible(grille,piece):
         return piece
