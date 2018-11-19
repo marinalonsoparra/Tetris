@@ -5,8 +5,10 @@ Fonctionnalité 1 :
   Sprint 1 : Déplacements
     rotation, déplacement_droite, déplacement_gauche, déplacement_bas
     
-   Sprint 2 : Fonctions jeu
-    test_fin_jeu, horloge
+  Sprint 2 : Fonctions jeu
+    test_fin_jeu, horloge, score, 
+    
+  Fonctions test : Timo
   
 Fonctionnalité 2 :
   Sprint 0 : Création d'une interface graphique tkinter
