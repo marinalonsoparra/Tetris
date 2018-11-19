@@ -4,8 +4,7 @@ from pieces_etats import pieces_etat
 import random as rd
 from deplacement_tetris import *
 
-def cree_grille() :
-    return np.zeros((22,10))
+
 
 def cree_grille() :
     return np.zeros((22,10)).tolist()
@@ -36,20 +35,32 @@ def detecte_ligne(grille):
 
 
 # renvoie la grille après avoir supprimé les lignes pleines
-def traitement_grille(grille):
+def traitement_grille(grille, score, nombre_lignes_supprimees):
+    niveau = nombre_lignes_supprimees // 10
     grille_bis = copy.deepcopy(grille)
-    for c in detecte_ligne(grille_bis):
+    liste_lignes_pleines = detecte_ligne(grille_bis)
+    nombre_lignes_pleines = len(liste_lignes_pleines)
+    for c in liste_lignes_pleines:
         grille_bis = effacer_ligne(grille_bis, c)
-    return grille_bis
+    if nombre_lignes_pleines == 1:
+        score += 40*(niveau + 1)
+    else:
+        if nombre_lignes_pleines == 2:
+            score += 100*(niveau + 1)
+        else:
+            if nombre_liste_lignes_pleines == 3:
+                score += 300*(niveau + 1)
+            else:
+                if nombre_lignes_pleines == 4:
+                    score += 1200*(niveau + 1)
+    nombre_lignes_supprimees += nombre_lignes_pleines
+    return(grille_bis)
+
 
 #renvoie un nouvelle piece (y=0,etat=0, x et forme aleatoire)
 def generer_piece():
-
     form=rd.choice([0,1,2,3,4,5,6])
     y=0
-    x=rd.randint(0,9)
+    x=3
     piece=[y,x,form,0]
-    while depasse_droit(piece):
-        x=rd.randint(0,9)
-        piece=[y,x,form,0]
     return piece
