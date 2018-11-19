@@ -8,7 +8,7 @@ def effacer_ligne(grille, i):
 def test():
     kkk
     return 3
-
+def test2
 
 # regarde si la ligne i de la grille est pleine
 def ligne_pleine(grille, i):
