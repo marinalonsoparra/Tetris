@@ -132,6 +132,9 @@ def test_traitement_ligne():
          [1, 2, 2, 0, 0, 0, 2, 1, 5, 5],
          [1, 0, 0, 0, 3, 4, 4, 4, 5, 5]]
 
+def test_generer_piece():
+
+
 
 
 
