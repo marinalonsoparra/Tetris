@@ -50,8 +50,8 @@ etat_piece_6={0:[(0,0),(0,1),(1,1),(1,2)],\
               2:[(1,0),(1,1),(2,1),(2,2)],\
               3:[(0,1),(1,0),(1,1),(2,0)]}
 
-pieces_etat=[etat_piece_0,etat_piece_1,etat_piece_2,etat_piece_3,etat_piece_4,etat_piece_5,etat_piece_6]
-
+pieces_etat={0:etat_piece_0,1:etat_piece_1,2:etat_piece_2,3:etat_piece_3,4:etat_piece_4,5:etat_piece_5,6:etat_piece_6}
+print(pieces_etat[1])
 ###piece=[y,x,forme,etat]
 
 def deplacement_droite(grille,piece):
