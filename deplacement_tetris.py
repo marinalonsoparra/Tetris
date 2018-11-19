@@ -127,4 +127,3 @@ def depasse_gauche(piece):
 
 
 
-#def collision(piece,grille) :
