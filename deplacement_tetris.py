@@ -30,7 +30,7 @@ def deplacement_bas(grille,piece):
         return piece_copy
 
 
-def position_possible(grid,piece):
+def position_possible(grille,piece):
     coordones=coordonees(piece)
 
 
