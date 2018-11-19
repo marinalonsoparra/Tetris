@@ -70,7 +70,7 @@ def deplacement_gauche(grille,piece):
         return piece_copy
     else :
         return piece
-
+#
 
 def deplacement_bas(grille,piece):
     piece_copy=copy.deepcopy(grille)
@@ -126,4 +126,3 @@ def depasse_gauche(piece):
     return False    
 
 
-def collision(piece,grille) :
