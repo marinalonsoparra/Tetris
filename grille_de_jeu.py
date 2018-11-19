@@ -1,6 +1,7 @@
 import numpy as np
 import copy
 from pieces_etats import pieces_etat
+
 import random as rd
 from deplacement_tetris import *
 
@@ -47,7 +48,7 @@ def traitement_grille(grille, score, nombre_lignes_supprimees):
         if nombre_lignes_pleines == 2:
             score += 100*(niveau + 1)
         else:
-            if nombre_liste_lignes_pleines == 3:
+            if nombre_lignes_pleines == 3:
                 score += 300*(niveau + 1)
             else:
                 if nombre_lignes_pleines == 4:
@@ -58,12 +59,8 @@ def traitement_grille(grille, score, nombre_lignes_supprimees):
 
 #renvoie un nouvelle piece (y=0,etat=0, x et forme aleatoire)
 def generer_piece():
-
     form=rd.choice([0,1,2,3,4,5,6])
     y=0
-    x=rd.randint(0,9)
+    x=3
     piece=[y,x,form,0]
-    while depasse_droit(piece):
-        x=rd.randint(0,9)
-        piece=[y,x,form,0]
     return piece

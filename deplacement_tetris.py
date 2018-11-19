@@ -77,11 +77,11 @@ def deplacement_gauche(grille,piece):
 # deplace la piece vers le bas sur la grille
 def deplacement_bas(grille,piece):
     piece_copy=copy.deepcopy(grille)
-    piece[0]+=1
-    if position_possible(grille,piece):
-        return piece
-    else :
+    piece_copy[0]+=1
+    if not superposition(grille,piece):
         return piece_copy
+    else:
+        return piece
 
 
 # renvoie les coordonnees des cubes de la piece
@@ -134,4 +134,4 @@ def depasse_gauche(piece):
     return False    
 
 
-def collision(piece,grille) :
+
