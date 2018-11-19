@@ -132,8 +132,9 @@ def test_traitement_ligne():
          [1, 2, 2, 0, 0, 0, 2, 1, 5, 5],
          [1, 0, 0, 0, 3, 4, 4, 4, 5, 5]]
 
-
-
-
-
+def test_generer_piece():
+    assert generer_piece()[0] in [i for i in range (0,9)]
+    assert generer_piece()[1] in [i for i in range (0,9)]
+    assert generer_piece()[2] in [i for i in range (0,7)]
+    assert generer_piece()[3]==0
 
