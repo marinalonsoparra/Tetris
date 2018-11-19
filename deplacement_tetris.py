@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+
 
 import copy
 etat_piece_0={0:[(1,0),(1,1),(1,2),(1,3)],\
@@ -52,7 +51,8 @@ etat_piece_6={0:[(0,0),(0,1),(1,1),(1,2)],\
               3:[(0,1),(1,0),(1,1),(2,0)]}
 
 pieces_etat=[etat_piece_0,etat_piece_1,etat_piece_2,etat_piece_3,etat_piece_4,etat_piece_5,etat_piece_6]
-###pièce=[y,x,forme,état]
+
+###piece=[y,x,forme,etat]
 
 def deplacement_droite(grille,piece):
     piece_copy=copy.deepcopy(piece)
@@ -100,6 +100,16 @@ def rotation(grille,piece):
     piece_copy=copy.deepcopy(grille)
     piece[3]=(piece[3]+1)%4
     while superposition(piece,grille) :
+        while depasse_droit(piece) :
+            piece[1]-=1
+        while depasse_gauche(piece) :
+            piece[1]+=1
+        piece[0]-=1
+    while depasse_droit(piece) :
+        while superposition(piece,grille) :
+            piece[0]-=1
+        while depasse_gauche(piece) :
+            piece[1]+=1
         piece[1]-=1
     if position_possible(grille,piece):
         return piece

@@ -1,5 +1,8 @@
 import numpy as np
 import copy
+from pieces_etats import pieces_etat
+import random as rd
+from deplacement_tetris import *
 
 def cree_grille() :
     return np.zeros((22,10))
@@ -38,3 +41,18 @@ def traitement_grille(grille):
     for c in detecte_ligne(grille_bis):
         grille_bis = effacer_ligne(grille_bis, c)
     return grille_bis
+
+#renvoie un nouvelle piece (y=0,etat=0, x et form aleatoire
+def generer_piece():
+
+    form=rd.choice([0,1,2,3,4,5,6])
+    y=0
+    x=rd.randint(0,9)
+    piece=[y,x,form,0]
+
+    while depasse_droit(piece):
+
+        x=rd.randint(0,9)
+        piece=[y,x,form,0]
+
+    return piece
