@@ -1,6 +1,6 @@
 Fonctionnalité 1 : 
   Sprint 0 : Grille du jeu  
-    cree_grille, effacer_ligne, genere_piece, 
+    cree_grille, effacer_ligne, genere_piece
     
   Sprint 1 : Déplacements
     rotation, déplacement_droite, déplacement_gauche, déplacement_bas, detecte_piece
@@ -8,7 +8,7 @@ Fonctionnalité 1 :
   Sprint 2 : Fonctions jeu
     test_fin_jeu, horloge, score, 
     
-  Fonctions test : Timo
+  Fonctions test : Timo (S1: deplacement), Marine (S0: grille de jeu,S2: fonction jeu)
   
 Fonctionnalité 2 :
   Sprint 0 : Création d'une interface graphique tkinter
