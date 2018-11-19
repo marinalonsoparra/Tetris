@@ -6,6 +6,7 @@ def effacer_ligne(grille, i):
     return grille_bis
 
 def test():
+    kkk
     return 3
 
 
