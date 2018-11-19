@@ -81,11 +81,6 @@ def deplacement_bas(grille,piece):
         return piece_copy
 
 
-def position_possible(grille,piece):
-    coordones=coordonees(piece)
-
-
-
 def coordonees(piece):
     t=pieces_etat[piece[2]][piece[3]]
     y,x=piece[0],piece[1]
