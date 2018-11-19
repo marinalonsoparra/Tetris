@@ -56,20 +56,21 @@ pieces_etat=[etat_piece_0,etat_piece_1,etat_piece_2,etat_piece_3,etat_piece_4,et
 
 def deplacement_droite(grille,piece):
     piece_copy=copy.deepcopy(piece)
-    piece[1]+=1
-    if position_possible(grille,piece):
-        return piece
-    else :
+    piece_copy[1]+=1
+    if  not depasse_droit(piece) and not superposition(piece,grille):
         return piece_copy
+    else :
+        return piece
 
 
 def deplacement_gauche(grille,piece):
     piece_copy=copy.deepcopy(piece)
-    piece[1]-=1
-    if position_possible(grille,piece):
-        return piece
-    else :
+    piece_copy[1]-=1
+    if  not depasse_gauche(piece) and not superposition(piece,grille):
         return piece_copy
+    else :
+        return piece
+
 
 def deplacement_bas(grille,piece):
     piece_copy=copy.deepcopy(grille)
