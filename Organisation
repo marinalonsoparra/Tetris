@@ -3,7 +3,7 @@ Fonctionnalité 1 :
     cree_grille, effacer_ligne, genere_piece, detecte_piece
     
   Sprint 1 : Déplacements
-    rotation, déplacement_droite, déplacement_gauche, déplacement_bas
+    rotation, deplacement_droite, deplacement_gauche, deplacement_bas
     
   Sprint 2 : Fonctions jeu
     test_fin_jeu, horloge, score, 
