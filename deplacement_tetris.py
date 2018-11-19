@@ -2,7 +2,7 @@
 
 import copy
 
-###pièce=[x,y,forme,état]
+###pièce=[y,x,forme,état]
 
 def deplacement_droite(grille,piece):
     piece_copy=copy.deepcopy(piece)
@@ -15,7 +15,7 @@ def deplacement_droite(grille,piece):
 
 def deplacement_gauche(grille,piece):
     piece_copy=copy.deepcopy(piece)
-    piece[0]-=1
+    piece[1]-=1
     if position_possible(grille,piece):
         return piece
     else :
@@ -23,7 +23,7 @@ def deplacement_gauche(grille,piece):
 
 def deplacement_bas(grille,piece):
     piece_copy=copy.deepcopy(grille)
-    piece[1]+=1
+    piece[0]+=1
     if position_possible(grille,piece):
         return piece
     else :
