@@ -6,7 +6,7 @@ Fonctionnalité 1 :
     rotation, déplacement_droite, déplacement_gauche, déplacement_bas, detecte_piece
     
   Sprint 2 : Fonctions jeu
-    test_fin_jeu, horloge, score, 
+    test_fin_jeu [Niels], horloge [Niels], score, 
     
   Fonctions test : Timo (S1: deplacement), Marine (S0: grille de jeu,S2: fonction jeu)
   
