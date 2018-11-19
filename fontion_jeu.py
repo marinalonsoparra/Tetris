@@ -1,7 +1,8 @@
 from time import*
+import numpy as np
 
 def test_fin_jeu (grille) :
-    res=grille.T
+    res=np.array(grille).T
     for i in res :
         if 0 in i :
             return False
