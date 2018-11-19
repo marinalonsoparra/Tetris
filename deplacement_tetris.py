@@ -145,5 +145,3 @@ def deplacement_piece(grille, piece,deplacement):
         return deplacement_bas(grille,piece)
     else :
         return piece
-
-
