@@ -5,6 +5,9 @@ def effacer_ligne(grille, i):
     grille_bis = [[0 for i in range(10)]] + grille_bis
     return grille_bis
 
+def test():
+    return 3
+
 
 # regarde si la ligne i de la grille est pleine
 def ligne_pleine(grille, i):
