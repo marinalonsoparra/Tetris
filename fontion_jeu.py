@@ -11,3 +11,5 @@ def test_fin_jeu (grille) :
 
 def horloge(n,difficulté) :
     sleep(max(0.2,1-difficulté/(difficulté+1+n)))
+
+#ok
