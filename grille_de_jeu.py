@@ -1,6 +1,7 @@
 import numpy as np
 import copy
 from pieces_etats import pieces_etat
+
 import random as rd
 from deplacement_tetris import *
 
@@ -48,7 +49,7 @@ def traitement_grille(grille, score, nombre_lignes_supprimees):
         if nombre_lignes_pleines == 2:
             score += 100*(niveau + 1)
         else:
-            if nombre_liste_lignes_pleines == 3:
+            if nombre_lignes_pleines == 3:
                 score += 300*(niveau + 1)
             else:
                 if nombre_lignes_pleines == 4:
