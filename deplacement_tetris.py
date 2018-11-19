@@ -1,4 +1,4 @@
-
+#
 
 import copy
 etat_piece_0={0:[(1,0),(1,1),(1,2),(1,3)],\
@@ -79,11 +79,6 @@ def deplacement_bas(grille,piece):
         return piece
     else :
         return piece_copy
-
-
-def position_possible(grille,piece):
-    coordones=coordonees(piece)
-
 
 
 def coordonees(piece):
