@@ -133,5 +133,15 @@ def depasse_gauche(piece):
             return True
     return False    
 
-
-
+# deplacement
+def deplacement_piece(grille, piece,deplacement):
+    if deplacement=='d':
+        return deplacement_droite(grille,piece)
+    elif deplacement=='g':
+        return deplacement_gauche(grille,piece)
+    elif deplacement=='h':
+        return rotation(grille,piece)
+    elif deplacement=='b':
+        return deplacement_bas(grille,piece)
+    else :
+        return piece
