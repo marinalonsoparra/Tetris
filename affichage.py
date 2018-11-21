@@ -62,6 +62,7 @@ def affichage_grille():
         global niveau
         global nombre_lignes_supprimees
         global score
+
         piece=deplacement_piece(grille,piece,'Down')
         mise_a_jour_grille_graph()
         if collision(piece, grille)[0]:
@@ -71,8 +72,10 @@ def affichage_grille():
             score = traitement[1]
             nombre_lignes_supprimees = traitement[2]
             piece = generer_piece()
+            mise_a_jour_grille_graph()
+        niveau = nombre_lignes_supprimees // 10
 
-        top.after(1000, start_game)
+        top.after(horloge(niveau), start_game)
 
 
     start = Button(root, text = 'Start Game', command = start_game)
