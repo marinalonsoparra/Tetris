@@ -18,13 +18,14 @@ def display_grid() :
     top.title("Tetris")
     f2 = Frame(top)
     global listbox
-    listbox = Listbox(f2, height = 6, selectmode = 'single')
+    listbox = Listbox(f2, height = 7, selectmode = 'single')
     listbox.insert(0, r'Default.mp3')
     listbox.insert(1, r'Dubstep.mp3')
     listbox.insert(2, r'Trap.mp3')
     listbox.insert(3, r'Piano.mp3')
     listbox.insert(4, r'Acoustic.mp3')
     listbox.insert(5, r'Trance.mp3')
+    listbox.insert(6, r'Electro.mp3')
     f2.grid(row = 3)
     listbox.grid()
     play_button = Button(top,
