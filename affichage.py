@@ -5,12 +5,6 @@ from fontion_jeu import *
 import time
 import pygame
 
-def sup(timer,niveau) :
-    if time.clock()-timer >=(1+niveau)/(1+3*niveau) :
-
-        return True,time.clock()
-    else :
-        return False,time.clock()
 
 
 def affichage_grille():
