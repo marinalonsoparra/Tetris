@@ -1,10 +1,11 @@
 from tkinter import *
+
 from grille_de_jeu import *
 from pieces_etats import *
 
 
 
-def frame_pieces(right_frame, piece, font_tetrix):
+def frame_pieces(right_frame,piece, font_tetrix):
     width_num=10
     height_num=30
     number_background_color="#424949"
