@@ -22,7 +22,8 @@ def collision(piece,grille) :           ## Detecte si la piece entre en collisio
     for i in Liste_piece :
         if i[0]==21 :
             for j in Liste_piece :
-                grille[j[0]][j[1]]+=pieces_etat.keys()[pieces_etat.values().index(piece)] ##On ajoute la clef de la piece
+                grille[j[0]][j[1]]+=pieces_etat.keys()[pieces_etat.values().index(piece)]+1
+                return (True,grille)##On ajoute la clef de la piece
         else :
             if grille[i[0]][i[1]+1]!=0 :
                 for k in Liste_piece :
