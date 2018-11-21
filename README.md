@@ -12,12 +12,14 @@ Fonctionnalité 1 :
   Sprint 2 : Fonctions jeu
     test_fin_jeu [Niels], horloge [Niels], score, [Samuel]
 
-  Fonctions test : Timo , Marine
+  Fonctions test : grille_du_jeu [Timo,Marine], deplacement [Marine], fonction_jeu [Marine]
+  Commentaires: grille_du_jeu [Marine], deplacement [Marine]
 
 Fonctionnalité 2 :
-  Sprint 0 : Création d'une interface graphique tkinter
-    affichage_grille
+  Sprint 0 : Création d'une interface graphique tkinter [Timo]
+  Ecran titre [Marina] 
+    
 
   Sprint 1 : Autres fonctionnalités
-    difficulte, theme, leaderboard
+    difficulte [Marine], theme, leaderboard [Marina], Musique [Niels]
 
