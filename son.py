@@ -28,15 +28,17 @@ def initMixer():                ##Initialisation du mixeur de pygame
     pygame.mixer.init(FREQ, SIZE, CHAN, BUFFER)
 
 file=r"theme_song.mp3"
-while True :                   ##Si la musique se termine, la relance
-    try:
-        initMixer()             ##Lance la musique
-        pmusic(file)
-    except KeyboardInterrupt:  # to stop playing, press "ctrl-c"
-        stopmusic()
-        print("\nPlay Stopped by user")
-        break
-    except Exception:
-        print("unknown error")
+
+def musique()    :
+    while True :                   ##Si la musique se termine, la relance
+        try:
+            initMixer()             ##Lance la musique
+            pmusic(file)
+        except KeyboardInterrupt:  # to stop playing, press "ctrl-c"
+            stopmusic()
+            print("\nPlay Stopped by user")
+            break
+        except Exception:
+            print("unknown error")
 
 print("Done")
