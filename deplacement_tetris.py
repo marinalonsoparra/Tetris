@@ -57,7 +57,6 @@ etat_piece_6={0:[(0,0),(0,1),(1,1),(1,2)],\
               3:[(0,1),(1,0),(1,1),(2,0)]}
 
 pieces_etat={0:etat_piece_0,1:etat_piece_1,2:etat_piece_2,3:etat_piece_3,4:etat_piece_4,5:etat_piece_5,6:etat_piece_6}
-print(pieces_etat[1])
 ###piece=[y,x,forme,etat]
 
 # deplace la piece vers la droite sur la grille
@@ -83,20 +82,9 @@ def deplacement_gauche(grille,piece):
 
 # deplace la piece vers le bas sur la grille
 def deplacement_bas(grille,piece):
-    piece_copy=copy.deepcopy(grille)
+    piece_copy=copy.deepcopy(piece)
     piece_copy[0]+=1
-    if not superposition(grille,piece):
-        return piece_copy
-    else:
-        return piece
-
-
-# deplace la piece vers le bas sur la grille
-
-def deplacement_bas(grille,piece):
-    piece_copy=copy.deepcopy(grille)
-    piece_copy[0]+=1
-    if not superposition(grille,piece_copy):
+    if not superposition(piece_copy,grille):
         return piece_copy
     else:
         return piece
@@ -129,7 +117,10 @@ def rotation(grille,piece):
 def superposition(piece,grille) :
     coord=coordonees(piece)
     for i in coord :
-        if grille[i[0]][i[1]]!=0 :
+        try:
+            if grille[i[0]][i[1]]!=0 :
+                return True
+        except IndexError:
             return True
     return False
 
@@ -149,17 +140,17 @@ def depasse_gauche(piece):
     for i in coordones:
         if i[1]<0:
             return True
-    return False    
+    return False
 
 # deplacement
 def deplacement_piece(grille, piece,deplacement):
-    if deplacement=='d':
+    if deplacement=='Right':
         return deplacement_droite(grille,piece)
-    elif deplacement=='g':
+    elif deplacement=='Left':
         return deplacement_gauche(grille,piece)
-    elif deplacement=='h':
+    elif deplacement=='Up':
         return rotation(grille,piece)
-    elif deplacement=='b':
+    elif deplacement=='Down':
         return deplacement_bas(grille,piece)
     else :
         return piece

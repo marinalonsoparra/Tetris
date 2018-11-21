@@ -64,3 +64,4 @@ def generer_piece():
     x=3
     piece=[y,x,form,0]
     return piece
+
