@@ -5,12 +5,12 @@ from fontion_jeu import *
 import time
 import pygame
 
-def sup(timer) :
-    if time.clock()-timer >=1 :
-        timer=time.clock()
-        return True
+def sup(timer,niveau) :
+    if time.clock()-timer >=(1+niveau)/(1+3*niveau) :
+
+        return True,time.clock()
     else :
-        return False
+        return False,time.clock()
 
 
 def affichage_grille():
@@ -66,18 +66,19 @@ def affichage_grille():
         mise_a_jour_grille_graph()
         timer=time.clock()
         while not test_fin_jeu(grille):
-            if sup(timer) :
+            bool,tim=sup(timer,niveau)
+            if bool :
+
                 piece=deplacement_piece(grille,piece,'Down')
-            print(timer)
+                print(tim-timer)
+                timer=tim
+
             if collision(piece, grille)[0]:
                 grille = collision(grille)[1]
                 piece = generer_piece()
-            else:
-                piece = deplacement_piece(grille, piece, 'Down')
             mise_a_jour_grille_graph()
 
-    start = Button(root, text = 'Start Game', command = start_game)
-    start.grid()
+
     top.bind('<Key>', KeyPressed)
     root.mainloop()
     top.mainloop()
