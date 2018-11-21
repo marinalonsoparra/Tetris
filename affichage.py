@@ -29,27 +29,23 @@ def mise_a_jour_grille_graph():
     grille_provisoire = copy.deepcopy(grille)
     forme = piece[2]
     for c in coordonees(piece):
-        grille_provisoire[c[0]][c[1]] = forme
+        grille_provisoire[c[0]][c[1]] = forme + 1
     for i in range(22):
         for j in range(10):
-            grille_graphique[i][j].config(bg = piece_coleur[forme])
+            grille_graphique[i][j].config(bg = piece_coleur[grille_provisoire[i][j]])
 
 
-    #for i in range(22):
-        #for j in range(10):
 
 mise_a_jour_grille_graph()
-
-
-    #grille_graphique
 
 def KeyPressed(event):
     global piece
     global grille_graphique
     d = event.keysym
     piece = deplacement_piece(grille, piece, d)
+    mise_a_jour_grille_graph()
 
 
-
+top.bind('<Key>', KeyPressed)
 root.mainloop()
 top.mainloop()
