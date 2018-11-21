@@ -3,7 +3,6 @@ from grille_de_jeu import *
 from pieces_etats import *
 from fontion_jeu import *
 import time
-import pygame
 
 
 
@@ -62,7 +61,7 @@ def affichage_grille():
         global niveau
         global nombre_lignes_supprimees
         global score
-
+        mise_a_jour_grille_graph()
         piece=deplacement_piece(grille,piece,'Down')
         mise_a_jour_grille_graph()
         if collision(piece, grille)[0]:
