@@ -1,5 +1,5 @@
 import pygame
-file=r"theme_song.mp3"
+file=r"tetris_official_theme_song.mp3"
 
 
 def pmusic(file):                               ##Joue la musique de Tetris et attend la fin avant de sortir de la fonction
@@ -27,15 +27,15 @@ def initMixer():                ##Initialisation du mixeur de pygame
     FREQ, SIZE, CHAN = getmixerargs()
     pygame.mixer.init(FREQ, SIZE, CHAN, BUFFER)
 
-while True :                   ##Si la musique se termine, la relance
-    try:
-        initMixer()             ##Lance la musique
-        pmusic(file)
-    except KeyboardInterrupt:  # to stop playing, press "ctrl-c"
-        stopmusic()
-        print("\nPlay Stopped by user")
-        break
-    except Exception:
-        print("unknown error")
+
+def musique()    :
+    while True :                   ##Si la musique se termine, la relance
+        try:
+            initMixer()             ##Lance la musique
+            pmusic(file)
+        except KeyboardInterrupt:  # to stop playing, press "ctrl-c"
+            stopmusic()
+            print("\nPlay Stopped by user")
+            break
 
 print("Done")
