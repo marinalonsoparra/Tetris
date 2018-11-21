@@ -74,7 +74,7 @@ def affichage_grille():
                 timer=tim
 
             if collision(piece, grille)[0]:
-                grille = collision(grille)[1]
+                grille = collision(piece,grille)[1]
                 piece = generer_piece()
             mise_a_jour_grille_graph()
 
