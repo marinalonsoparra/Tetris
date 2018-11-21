@@ -20,7 +20,7 @@ def collision(piece,grille) :           ## Detecte si la piece entre en collisio
     Liste_piece=coordonees(piece)
     grille_copy=copy.deepcopy(grille)
     for i in Liste_piece :
-        if i[0]==22 :
+        if i[0]==21 :
             for j in Liste_piece :
                 grille[j[0]][j[1]]+=pieces_etat.keys()[pieces_etat.values().index(piece)] ##On ajoute la clef de la piece
         else :
