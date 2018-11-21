@@ -87,6 +87,43 @@ def affichage_grille():
         piece = deplacement_piece(grille, piece, d)
         mise_a_jour_grille_graph()
 
+    global next_piece
+    next_piece = generer_piece()
+
+    right_frame = Toplevel()
+
+    width_num=10
+    height_num=30
+    number_background_color="#424949"
+    frame_background_color="grey"
+
+    right_frame.config(background=frame_background_color, relief ='groove', highlightthickness=1)
+
+    label_score = Label(right_frame, text="NEXT", fg="white", font='Helvetica', background="grey")
+    label_score.grid(row=0,column=0)
+
+    label_grid = Label(right_frame, background=number_background_color, relief ='groove', highlightthickness=1, width=width_num, height=height_num)
+    label_grid.grid(row=1,column=0)
+
+    grille_graphique2 = [[0 for _ in range(4)] for _ in range(4)]
+    grille_provisoire2 = [[0 for _ in range(4)] for _ in range(4)]
+
+
+    for i in range(4):
+        for j in range(4):
+            case = Frame(label_grid, bg = number_background_color, width = 30, height = 30)
+            case.grid(row = i, column = j)
+            grille_graphique2
+            [i][j] = case
+
+    def update_next_piece():
+        forme=next_piece[2]
+        for c in coordonees(piece):
+             grille_provisoire2[c[0]][c[1]-3] = forme+1
+             for i in range(4):
+                for j in range(4):
+                    if grille_provisoire2[i][j]!=0:
+                        grille_graphique2[i][j].config(bg = piece_coleur[grille_provisoire2[i][j]],relief = 'groove',bd = 0.5)
 
     def start_game():
         global grille
@@ -94,7 +131,10 @@ def affichage_grille():
         global niveau
         global nombre_lignes_supprimees
         global score
+        global next_piece
+
         if not test_fin_jeu(grille):
+
             mise_a_jour_grille_graph()
             piece=deplacement_piece(grille,piece,'Down')
             mise_a_jour_grille_graph()
@@ -104,7 +144,9 @@ def affichage_grille():
                 grille = traitement[0]
                 score = traitement[1]
                 nombre_lignes_supprimees = traitement[2]
-                piece = generer_piece()
+                piece = next_piece
+                next_piece = generer_piece()
+                update_next_piece()
                 mise_a_jour_grille_graph()
                 label_line_num.config(text = str(nombre_lignes_supprimees))
                 label_score_num.config(text = str(score))
@@ -122,6 +164,7 @@ def affichage_grille():
     root.mainloop()
     top.mainloop()
     left_frame.mainloop()
+    right_frame.mainloop()
 
 
 
