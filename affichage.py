@@ -67,7 +67,8 @@ def affichage_grille():
         timer=time.clock()
         while not test_fin_jeu():
             if sup(timer) :
-                piece=deplacement_piece(grille,piece,'b')
+                piece=deplacement_piece(grille,piece,'Down')
+            print(timer)
             if collision(piece, grille)[0]:
                 grille = collision(grille)[1]
                 piece = generer_piece()
