@@ -3,6 +3,7 @@ from grille_de_jeu import *
 from pieces_etats import *
 from fontion_jeu import *
 import time
+import pygame
 
 
 def affichage_grille():
