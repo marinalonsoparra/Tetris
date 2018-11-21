@@ -3,14 +3,8 @@ from grille_de_jeu import *
 from pieces_etats import *
 from fontion_jeu import *
 import time
-import pygame
 
-def sup(timer) :
-    if time.clock()-timer >=1 :
-        timer=time.clock()
-        return True
-    else :
-        return False
+
 
 
 def affichage_grille():
@@ -63,18 +57,14 @@ def affichage_grille():
         global grille
         global piece
         global niveau
+
+        piece=deplacement_piece(grille,piece,'Down')
         mise_a_jour_grille_graph()
-        timer=time.clock()
-        while not test_fin_jeu(grille):
-            if sup(timer) :
-                piece=deplacement_piece(grille,piece,'Down')
-            print(timer)
-            if collision(piece, grille)[0]:
-                grille = collision(grille)[1]
-                piece = generer_piece()
-            else:
-                piece = deplacement_piece(grille, piece, 'Down')
-            mise_a_jour_grille_graph()
+        if collision(piece, grille)[0]:
+            grille = collision(grille)[1]
+            piece = generer_piece()
+        top.after(1000, start_game)
+
 
 
     start = Button(root, text = 'Start Game', command = start_game)
