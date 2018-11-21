@@ -57,7 +57,7 @@ def affichage_grille():
         d = event.keysym
         piece = deplacement_piece(grille, piece, d)
         mise_a_jour_grille_graph()
-        print('o')
+
 
     def start_game():
         global grille
@@ -65,7 +65,7 @@ def affichage_grille():
         global niveau
         mise_a_jour_grille_graph()
         timer=time.clock()
-        while not test_fin_jeu():
+        while not test_fin_jeu(grille):
             if sup(timer) :
                 piece=deplacement_piece(grille,piece,'Down')
             print(timer)
@@ -74,15 +74,13 @@ def affichage_grille():
                 piece = generer_piece()
             else:
                 piece = deplacement_piece(grille, piece, 'Down')
-
             mise_a_jour_grille_graph()
 
-    top.bind('space', start_game)
+    start = Button(root, text = 'Start Game', command = start_game)
+    start.grid()
     top.bind('<Key>', KeyPressed)
     root.mainloop()
     top.mainloop()
-
-
 
 
 
