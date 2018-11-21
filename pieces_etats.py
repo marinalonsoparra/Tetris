@@ -55,10 +55,11 @@ etat_piece_6={0:[(0,0),(0,1),(1,1),(1,2)],\
 
 pieces_etat={0:etat_piece_0,1:etat_piece_1,2:etat_piece_2,3:etat_piece_3,4:etat_piece_4,5:etat_piece_5,6:etat_piece_6}
 
-piece_coleur={0:"##72f1f1",\
-              1:"#2046f0",\
-              2:"#e2972f",\
-              3:"#f0f02d",\
+piece_coleur={0:'black',\
+              1:"#72f1f1",\
+              2:"#2046f0",\
+              3:"#e2972f",\
+              4:"#f0f02d",\
               4:"#7ff217",\
-              5:"#a451f0",\
-              6:"#e93f33"}
+              6:"#a451f0",\
+              7:"#e93f33"}
