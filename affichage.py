@@ -51,3 +51,5 @@ def affichage_grille():
     top.bind('<Key>', KeyPressed)
     root.mainloop()
     top.mainloop()
+
+affichage_grille()
