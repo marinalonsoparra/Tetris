@@ -65,6 +65,7 @@ def affichage_grille():
                 piece = deplacement_piece(grille, piece, 'Down')
             mise_a_jour_grille_graph()
 
+
     start = Button(root, text = 'Start Game', command = start_game)
     start.grid()
     top.bind('<Key>', KeyPressed)
