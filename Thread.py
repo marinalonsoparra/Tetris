@@ -29,6 +29,10 @@ class display(Thread):
         Thread.__init__(self)
     def run(self):
 
+        global score
+        global nombre_lignes_supprimees
+        score = 0
+        nombre_lignes_supprimees = 0
         root = Tk()
         root.title("Tetris")
         top = Toplevel()
@@ -76,14 +80,19 @@ class display(Thread):
             global grille
             global piece
             global niveau
-
+            global nombre_lignes_supprimees
+            global score
             piece=deplacement_piece(grille,piece,'Down')
             mise_a_jour_grille_graph()
             if collision(piece, grille)[0]:
-                grille = collision(piece,grille)[1]
+                grille = collision(piece, grille)[1]
+                traitement = traitement_grille(grille, score, nombre_lignes_supprimees)
+                grille = traitement[0]
+                score = traitement[1]
+                nombre_lignes_supprimees = traitement[2]
                 piece = generer_piece()
-            top.after(1000, start_game)
 
+            top.after(1000, start_game)
 
 
         start = Button(root, text = 'Start Game', command = start_game)
@@ -91,6 +100,7 @@ class display(Thread):
         top.bind('<Key>', KeyPressed)
         root.mainloop()
         top.mainloop()
+
 
 
 
