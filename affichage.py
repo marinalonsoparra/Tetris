@@ -79,6 +79,8 @@ def affichage_grille():
             mise_a_jour_grille_graph()
 
 
+    start = Button(root, text = 'Start Game', command = start_game)
+    start.grid()
     top.bind('<Key>', KeyPressed)
     root.mainloop()
     top.mainloop()
