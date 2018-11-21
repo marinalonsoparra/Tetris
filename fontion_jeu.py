@@ -1,19 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from deplacement_tetris.py import *
-from time import*
+from time import *
+from grille_de_jeu import *
+
 import numpy as np
 from deplacement_tetris import*
 def test_fin_jeu (grille) :
-    res=np.array(grille).T
-    for i in res :
-        if len(i)>22 :
-            return True
+    if not (grille[0] == [0 for i in range(10)] and grille[1] == [0 for i in range(10)]):
+        return True
     return False
 
 
-def horloge(n, difficulte) :
-    sleep(max(0.2, 1 - difficulte / (difficulte + 1 + n)))
+def horloge(niveau) :
+    sleep(max(0.2, 5 / (5 + niveau)))
 
 def collision(piece,grille) :
     Liste_piece=coordonees(piece)
