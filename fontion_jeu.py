@@ -22,11 +22,12 @@ def collision(piece,grille) :           ## Detecte si la piece entre en collisio
     for i in Liste_piece :
         if i[0]==21 :
             for j in Liste_piece :
-                grille[j[0]][j[1]]+=pieces_etat.keys()[pieces_etat.values().index(piece)] ##On ajoute la clef de la piece
+                grille_copy[j[0]][j[1]]+=piece[2]+1 ##On ajoute la clef de la piece
+            return (True,grille_copy)
         else :
-            if grille[i[0]][i[1]+1]!=0 :
+            if grille[i[0]+1][i[1]]!=0 :
                 for k in Liste_piece :
-                    grille_copy[k[0]][k[1]]+=pieces_etat.keys()[pieces_etat.values().index(piece)]
+                    grille_copy[k[0]][k[1]]+=piece[2]+1
                 return (True,grille_copy)
     return (False,grille)           ##renvoie true ou false s'il y z collision avec la grille de jeu modifiee, et la nouvelle grille
 
