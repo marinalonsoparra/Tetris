@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from deplacement_tetris.py import *
+from deplacement_tetris import *
 from time import *
 from grille_de_jeu import *
 
