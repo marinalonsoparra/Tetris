@@ -12,7 +12,7 @@ def test_fin_jeu (grille) :
 
 
 def horloge(niveau) :
-    sleep(max(0.2, 5 / (5 + niveau)))
+    return int(max(0.2, 0.5 - niveau*0.5/7) * 1000)
 
 
 #
