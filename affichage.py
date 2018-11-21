@@ -13,19 +13,21 @@ def affichage_grille():
     top = Toplevel()
 
     global niveau
-    niveau = 0
+    niveau = 1
 
     global grille
     grille = cree_grille()
     global grille_graphique
     grille_graphique = [[0 for _ in range(10)] for _ in range(22)]
-    global piece
-    piece = generer_piece()
+
     for i in range(22):
             for j in range(10):
                 case = Frame(top, bg = 'black', relief = 'groove', bd = 0.5, width = 30, height = 30)
                 case.grid(row = i, column = j)
                 grille_graphique[i][j] = case
+
+    global piece
+    piece = generer_piece()
 
     ##Fonctions
     def mise_a_jour_grille_graph():
@@ -49,22 +51,27 @@ def affichage_grille():
         mise_a_jour_grille_graph()
         print('o')
 
-
-
-    while not test_fin_jeu(grille):
-        horloge(niveau)
-        if collision(piece, grille)[0]:
-            grille = collision(grille)[1]
-            piece = generer_piece()
-        else:
-            deplacement_piece(grille, piece, 'Down')
-
-
+    def start_game():
+        global grille
+        global piece
+        global niveau
         mise_a_jour_grille_graph()
+        while not test_fin_jeu():
+            horloge(niveau)
+            if collision(piece, grille)[0]:
+                grille = collision(grille)[1]
+                piece = generer_piece()
+            else:
+                piece = deplacement_piece(grille, piece, 'Down')
 
-        top.bind('<Key>', KeyPressed)
-        root.mainloop()
-        top.mainloop()
+            mise_a_jour_grille_graph()
+
+    top.bind('space', start_game)
+    top.bind('<Key>', KeyPressed)
+    root.mainloop()
+    top.mainloop()
+
+
 
 
 

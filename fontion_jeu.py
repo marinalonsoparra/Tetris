@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from deplacement_tetris import *
 from time import *
-from grille_de_jeu impo
+
 
 # teste si le joueur a perdu
 # parametres: grille (liste) (defini l'etat de la grille de jeu avec les differents blocs)
