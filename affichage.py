@@ -5,6 +5,8 @@ from fontion_jeu import *
 import time
 
 
+
+
 def affichage_grille():
 
 
@@ -55,15 +57,15 @@ def affichage_grille():
         global grille
         global piece
         global niveau
+
+        piece=deplacement_piece(grille,piece,'Down')
         mise_a_jour_grille_graph()
-        while not test_fin_jeu(grille):
-            time.sleep(1)
-            if collision(piece, grille)[0]:
-                grille = collision(piece,grille)[1]
-                piece = generer_piece()
-            else:
-                piece = deplacement_piece(grille, piece, 'Down')
-            mise_a_jour_grille_graph()
+        if collision(piece, grille)[0]:
+            grille = collision(grille)[1]
+            piece = generer_piece()
+        top.after(1000, start_game)
+
+
 
     start = Button(root, text = 'Start Game', command = start_game)
     start.grid()
