@@ -65,18 +65,19 @@ def affichage_grille():
         global niveau
         mise_a_jour_grille_graph()
         timer=time.clock()
+        n=0
         while not test_fin_jeu(grille):
-            bool,tim=sup(timer,niveau)
-            if bool :
-
+            if n==2 :
                 piece=deplacement_piece(grille,piece,'Down')
-                print(tim-timer)
-                timer=tim
+
+                n=0
+                continue
 
             if collision(piece, grille)[0]:
                 grille = collision(piece,grille)[1]
                 piece = generer_piece()
             mise_a_jour_grille_graph()
+            n+=1
 
 
     start = Button(root, text = 'Start Game', command = start_game)
