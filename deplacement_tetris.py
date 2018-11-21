@@ -144,13 +144,13 @@ def depasse_gauche(piece):
 
 # deplacement
 def deplacement_piece(grille, piece,deplacement):
-    if deplacement=='d':
+    if deplacement=='Right':
         return deplacement_droite(grille,piece)
-    elif deplacement=='g':
+    elif deplacement=='Left':
         return deplacement_gauche(grille,piece)
-    elif deplacement=='h':
+    elif deplacement=='Up':
         return rotation(grille,piece)
-    elif deplacement=='b':
+    elif deplacement=='Down':
         return deplacement_bas(grille,piece)
     else :
         return piece
