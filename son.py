@@ -27,6 +27,7 @@ def initMixer():                ##Initialisation du mixeur de pygame
     FREQ, SIZE, CHAN = getmixerargs()
     pygame.mixer.init(FREQ, SIZE, CHAN, BUFFER)
 
+file=r"theme_song.mp3"
 while True :                   ##Si la musique se termine, la relance
     try:
         initMixer()             ##Lance la musique
