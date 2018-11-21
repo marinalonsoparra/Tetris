@@ -4,7 +4,6 @@ from deplacement_tetris.py import *
 from time import *
 from grille_de_jeu import *
 
-import numpy as np
 from deplacement_tetris import*
 def test_fin_jeu (grille) :
     if not (grille[0] == [0 for i in range(10)] and grille[1] == [0 for i in range(10)]):

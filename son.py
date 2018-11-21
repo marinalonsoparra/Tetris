@@ -40,5 +40,5 @@ def musique()    :
             break
         except Exception:
             print("unknown error")
-
+musique()
 print("Done")
