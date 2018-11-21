@@ -7,9 +7,9 @@ import numpy as np
 def test_fin_jeu (grille) :
     res=np.array(grille).T
     for i in res :
-        if 0 in i :
-            return False
-    return True
+        if len(i)>22 :
+            return True
+    return False
 
 
 def horloge(n, difficulte) :
