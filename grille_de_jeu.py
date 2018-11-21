@@ -52,6 +52,7 @@ def detecte_ligne(grille):
 # renvoie grille (list) (grille traitee)
 
 def traitement_grille(grille, score, nombre_lignes_supprimees):
+
     niveau = nombre_lignes_supprimees // 10
     grille_bis = copy.deepcopy(grille)
     liste_lignes_pleines = detecte_ligne(grille_bis)
@@ -70,7 +71,7 @@ def traitement_grille(grille, score, nombre_lignes_supprimees):
                 if nombre_lignes_pleines == 4:
                     score += 1200*(niveau + 1)
     nombre_lignes_supprimees += nombre_lignes_pleines
-    return(grille_bis)
+    return(grille_bis, score, nombre_lignes_supprimees)
 
 
 #renvoie un nouvelle piece (y=0,etat=0, x et forme aleatoire)
