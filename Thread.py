@@ -10,18 +10,6 @@ from pieces_etats import *
 from fontion_jeu import *
 import time
 
-class music(Thread):
-    def __init__(self):
-        Thread.__init__(self)
-    def run(self):                  ##Si la musique se termine, la relance
-            while True :                   ##Si la musique se termine, la relance
-                try:
-                    initMixer()             ##Lance la musique
-                    pmusic(file)
-                except KeyboardInterrupt:  # to stop playing, press "ctrl-c"
-                    stopmusic()
-                    print("\nPlay Stopped by user")
-                    break
 
 
 class display(Thread):
@@ -105,14 +93,6 @@ class display(Thread):
 
 
 
-thA=display()
-thM=music()
-
-thA.start()
-thM.start()
-
-thA.join()
-thM.join()
 
 
 
