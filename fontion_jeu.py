@@ -1,10 +1,7 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-from deplacement_tetris import *
-from time import *
-from grille_de_jeu import *
 
-from deplacement_tetris import*
+
+from Tetrix.deplacement_tetris import *
+
 def test_fin_jeu (grille) :
     if not (grille[0] == [0 for i in range(10)] and grille[1] == [0 for i in range(10)]):
         return True
@@ -22,7 +19,7 @@ def collision(piece,grille) :           ## Detecte si la piece entre en collisio
     for i in Liste_piece :
         if i[0]==21 :
             for j in Liste_piece :
-                grille[j[0]][j[1]]+=pieces_etat.keys()[pieces_etat.values().index(piece)]+1
+                grille_copy[j[0]][j[1]]+=piece[2]+1
                 return (True,grille)##On ajoute la clef de la piece
         else :
             if grille[i[0]][i[1]+1]!=0 :
