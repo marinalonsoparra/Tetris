@@ -11,6 +11,9 @@ from fontion_jeu import *
 import time
 from affichage import *
 
+piece = generer_piece()
+next_piece=generer_piece()
+
 
 def display_grid() :
     global top
@@ -95,7 +98,9 @@ class display(Thread):
                     grille_graphique[i][j] = case
 
         global piece
-        piece = generer_piece()
+        global next_piece
+       ## piece = generer_piece()
+        ##next_piece=generer_piece()
 
         #Fenetre score
         left_frame = Toplevel()
@@ -151,8 +156,6 @@ class display(Thread):
             piece = deplacement_piece(grille, piece, d)
             mise_a_jour_grille_graph()
 
-        global next_piece
-        next_piece = generer_piece()
 
         right_frame = Toplevel()
 
@@ -169,8 +172,9 @@ class display(Thread):
         label_grid = Label(right_frame, background=number_background_color, relief ='groove', highlightthickness=1, width=width_num, height=height_num)
         label_grid.grid(row=1,column=0)
 
-        grille_graphique2 = [[0 for _ in range(4)] for _ in range(4)]
         grille_provisoire2 = [[0 for _ in range(4)] for _ in range(4)]
+        grille_graphique2 = [[0 for _ in range(4)] for _ in range(4)]
+
 
 
         for i in range(4):
@@ -180,13 +184,17 @@ class display(Thread):
                 grille_graphique2[i][j] = case
 
         def update_next_piece():
+
             forme=next_piece[2]
-            for c in coordonees(piece):
-                 grille_provisoire2[c[0]][c[1]-3] = forme+1
-                 for i in range(4):
-                    for j in range(4):
-                        if grille_provisoire2[i][j]!=0:
-                            grille_graphique2[i][j].config(bg = piece_coleur[grille_provisoire2[i][j]],relief = 'groove',bd = 0.5)
+            for k in range(4) :
+                for l in range(4) :
+                    if (k,l) in coordonees(next_piece) :
+                        grille_provisoire2[k][l] = forme+1
+                    else :
+                        grille_provisoire2[k][l]=0
+                grille_graphique2[k][l].config(bg = piece_coleur[grille_provisoire2[k][l]],relief = 'groove',bd = 0.5)
+
+
 
         def start_game():
             global grille
@@ -207,8 +215,7 @@ class display(Thread):
                     grille = traitement[0]
                     score = traitement[1]
                     nombre_lignes_supprimees = traitement[2]
-                    piece = next_piece
-                    next_piece = generer_piece()
+                    piece,next_piece = next_piece,generer_piece()
                     update_next_piece()
                     mise_a_jour_grille_graph()
                     label_line_num.config(text = str(nombre_lignes_supprimees))
@@ -219,6 +226,7 @@ class display(Thread):
                 top.after(horloge(niveau), start_game)
             else:
                 print('game over')
+
 
 
         start = Button(root, text = 'Start Game', command = start_game)

@@ -113,8 +113,7 @@ def affichage_grille():
         for j in range(4):
             case = Frame(label_grid, bg = number_background_color, width = 30, height = 30)
             case.grid(row = i, column = j)
-            grille_graphique2
-            [i][j] = case
+            grille_graphique2[i][j] = case
 
     def update_next_piece():
         forme=next_piece[2]
