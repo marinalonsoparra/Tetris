@@ -59,7 +59,7 @@ def affichage_grille():
         while not test_fin_jeu(grille):
             time.sleep(1)
             if collision(piece, grille)[0]:
-                grille = collision(grille)[1]
+                grille = collision(piece,grille)[1]
                 piece = generer_piece()
             else:
                 piece = deplacement_piece(grille, piece, 'Down')
