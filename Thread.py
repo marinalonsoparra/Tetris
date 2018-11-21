@@ -80,7 +80,7 @@ class display(Thread):
             piece=deplacement_piece(grille,piece,'Down')
             mise_a_jour_grille_graph()
             if collision(piece, grille)[0]:
-                grille = collision(grille)[1]
+                grille = collision(piece,grille)[1]
                 piece = generer_piece()
             top.after(1000, start_game)
 
