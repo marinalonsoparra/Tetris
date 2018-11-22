@@ -11,7 +11,7 @@ from deplacement_tetris import *
 def cree_grille() :
     return np.zeros((22,10)).tolist()
 
-# efface la ligne i de la grille et crée une nouvelle ligne en haut de la grille
+# efface la ligne i de la grille et cree une nouvelle ligne en haut de la grille
 # parametres: grille (list) (grille de jeu,10*22)
 # i (int) (rang de la ligne a detruire)
 # renvoie: grille (list) (nouvelle grille de jeu)
@@ -45,7 +45,7 @@ def detecte_ligne(grille):
     return liste_lignes_pleines
 
 
-# renvoie la grille après avoir supprimé les lignes pleines, update le score en fonction du nombre de lignes supprimees et le nombre totale de lignes supprimees
+# renvoie la grille apres avoir supprime les lignes pleines, update le score en fonction du nombre de lignes supprimees et le nombre totale de lignes supprimees
 # parametres: grille (list) (grille de jeu,10*22)
 # score (int) (score du joueur)
 # nombre_ligne_supprimees (int) (nombre de ligne supprimees par le joueur au cours de la partie)
