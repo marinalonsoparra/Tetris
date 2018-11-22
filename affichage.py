@@ -1,7 +1,7 @@
 from tkinter import *
 from grille_de_jeu import *
 from pieces_etats import *
-from fontion_jeu import *
+from fonctions_jeu import *
 import operator
 
 users_scores=[('a',10),('b',20),('c',30)]
