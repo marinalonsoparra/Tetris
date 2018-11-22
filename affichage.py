@@ -4,7 +4,32 @@ from pieces_etats import *
 from fontion_jeu import *
 import operator
 
-users_scores=[('a',10),('b',20),('c',30)]
+
+
+def Save_user_score() :
+        ###Fonction pour sauvegarder la grille
+        file=open("users_scores.txt","w+")
+        user_name=user_name.get()
+        file.write(user_name.get())
+        file.write(score)
+
+
+def Load() :
+    ### Fonction pour charger la sauvegarde
+    list_users_scores=[('',''),('',''),('','')]
+
+    file=open("users_scores.txt","r+")
+    for row in file.read():
+        user=""
+        i=0
+        while row[i]!=' ':
+            user+=row[i]
+            i+=1
+            score=''
+        for j in range (i,len(row)):
+            score+=row[j]
+            list_users_scores.append(user,score)
+    return list_users_scores
 
 
 def affichage_grille():
@@ -152,6 +177,7 @@ def affichage_grille():
         score_board=Message(score_board_window,bg='grey', fg='white', text="Score Board",font=("Times", "24", "bold"))
         score_board.grid(row=0, column=1)
         score_board.config(anchor=N)
+        users_scores=Load()
         users_scores.sort(key=operator.itemgetter(1))
         n_1_user=Message(score_board_window,bg='grey', fg="#72f1f1",text= "First: "+str(users_scores[len(users_scores)-1][0]))
         n_1_score=Message(score_board_window,bg='grey', fg="#72f1f1",text= users_scores[len(users_scores)-1][1])
@@ -170,8 +196,30 @@ def affichage_grille():
     def game_over(): #Affiche 'GAME OVER' sur le cadre score/niveau/lignes
         Label(left_frame, text = 'GAME OVER', bg = 'grey', fg = 'red', font = ('Helvetica', 20, 'bold')).grid()
         if user_name.get()!='':
-                users_scores.append((user_name.get(),score))
+                Save_user_score()
 
+    def Save_user_score() :
+        ###Fonction pour sauvegarder la grille
+        file=open("users_scores.txt","w+")
+        file.write(user_name.get()+" : "+str(score))
+        print(user_name.get()+" : "+str(score))
+        file.close()
+
+
+
+    def Load() :
+        ### Fonction pour charger la sauvegarde
+        list_users_scores=[('',''),('',''),('','')]
+        file=open("users_scores.txt","r+")
+        for row in file:
+            print(row)
+            user=""
+            i=row.index(" : ")
+            user=row[0:i]
+            score=row[i:len(row)]
+            list_users_scores.append((user,score))
+        file.close()
+        return list_users_scores
 
 
     def start_game():
