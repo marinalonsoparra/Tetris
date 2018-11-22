@@ -101,6 +101,9 @@ def affichage_grille():
         mise_a_jour_grille_graph()
 
     def display_score_board():
+        # permet d'ouvrir la fenêtre des scores
+        # parametres: None
+        # renvoie: None
         score_board_window=Toplevel(root,bg='grey')
         score_board_window.geometry()
         score_board=Message(score_board_window,bg='grey', fg='white', text="Score Board",font=("Times", "24", "bold"))
@@ -119,7 +122,7 @@ def affichage_grille():
         n_2_score.grid(row=5,column=0)
         n_3_user.grid(row=4,column=2)
         n_3_score.grid(row=5,column=2)
-        score_board_window.grid(350*350)
+        score_board_window.grid()
 
     global next_piece
     next_piece = generer_piece()
