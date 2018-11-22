@@ -11,8 +11,8 @@ def affichage_grille():
 
     global score, nombre_lignes_supprimees, niveau, grille_next_piece, grille_graphique_next_piece, grille, grille_graphique, piece, next_piece
 
-    font_tetrix = ('Need Every Sound',16)
-    font_tetrix_2 = ('Need Every Sound',12)
+    font_tetrix = ('Bauhaus 93',20)
+    font_tetrix_2 = ('Bauhaus 93',15)
     score = 0
     nombre_lignes_supprimees = 0
     root = Tk() # Fenetre start game/quit/...
@@ -32,7 +32,7 @@ def affichage_grille():
     set_niveau.insert(7,"Level 6")
     set_niveau.grid()
 
-    ## Fenetre score/niveau/lignes effacées
+    ## Fenetre score/niveau/lignes effacees
     niveau = 0
     score = 0
     nombre_lignes_supprimees = 0
@@ -95,7 +95,7 @@ def affichage_grille():
 
 
     piece = generer_piece()     # Creation de la premiere piecE
-    next_piece = generer_piece()    # Creation de la pièce suivante
+    next_piece = generer_piece()    # Creation de la piece suivante
 
     ## Fonctions d'affichage et d'interaction :
 
@@ -147,12 +147,12 @@ def affichage_grille():
         score_board.grid(row=0, column=1)
         score_board.config(anchor=N)
         users_scores.sort(key=operator.itemgetter(1))
-        n_1_user=Message(score_board_window,bg='grey', fg="#72f1f1",text= "First: "+str(users_scores[len(users_scores)-1][0]))
-        n_1_score=Message(score_board_window,bg='grey', fg="#72f1f1",text= users_scores[len(users_scores)-1][1])
-        n_2_score=Message(score_board_window,bg='grey',fg="#2046f0",text= users_scores[len(users_scores)-2][1])
-        n_2_user=Message(score_board_window,bg='grey',fg='#2046f0',text= "Second: "+str(users_scores[len(users_scores)-2][0]))
-        n_3_score=Message(score_board_window,bg='grey',fg="#e2972f",text= users_scores[len(users_scores)-3][1])
-        n_3_user=Message(score_board_window,bg='grey',fg="#e2972f",text= "Third: "+str(users_scores[len(users_scores)-3][0]))
+        n_1_user=Message(score_board_window,bg='grey', fg="#72f1f1",text= "First: "+str(users_scores[len(users_scores)-1][0]),font=font_tetrix_2)
+        n_1_score=Message(score_board_window,bg='grey', fg="#72f1f1",text= users_scores[len(users_scores)-1][1],font=font_tetrix_2)
+        n_2_score=Message(score_board_window,bg='grey',fg="#2046f0",text= users_scores[len(users_scores)-2][1],font=font_tetrix_2)
+        n_2_user=Message(score_board_window,bg='grey',fg='#2046f0',text= "Second: "+str(users_scores[len(users_scores)-2][0]),font=font_tetrix_2)
+        n_3_score=Message(score_board_window,bg='grey',fg="#e2972f",text= users_scores[len(users_scores)-3][1],font=font_tetrix_2)
+        n_3_user=Message(score_board_window,bg='grey',fg="#e2972f",text= "Third: "+str(users_scores[len(users_scores)-3][0]),font=font_tetrix_2)
         n_1_user.grid(row=2,column=1)
         n_1_score.grid(row=3,column=1)
         n_2_user.grid(row=4,column=0)
