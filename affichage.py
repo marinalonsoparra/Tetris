@@ -31,9 +31,7 @@ def affichage_grille():
     global niveau
     niveau = 0
 
-
-
-    #Fenetre score
+    #Fenetre score/niveau/lignes effacées
     left_frame = Toplevel()
     font_tetrix = 'Helvetica'
     width_num=10
@@ -49,13 +47,11 @@ def affichage_grille():
     label_score_num = Label(left_frame, text=str(score), fg="white", background=number_background_color,width=width_num, height=height_num)
     label_score_num.grid(row=1,column=0)
 
-
     label_level = Label(left_frame, text="LEVEL", fg="#424949", font=font_tetrix, background=frame_background_color,width=width_num+3, height=height_num)
     label_level.grid(row=2,column=0)
 
     label_level_num = Label(left_frame, text=str(niveau), fg="white", background=number_background_color,width=width_num, height=height_num)
     label_level_num.grid(row=3,column=0)
-
 
     label_line = Label(left_frame, text="LINES", fg="#424949", font=font_tetrix, background=frame_background_color,width=width_num+3, height=height_num)
     label_line.grid(row=4,column=0)
@@ -65,6 +61,27 @@ def affichage_grille():
 
     label_vide = Label(left_frame, text="", background=frame_background_color)
     label_vide.grid(row=6,column=0)
+
+    #Fenetre next piece
+    right_frame = Toplevel()
+
+    right_frame.config(background="#424949", relief ='raised', highlightthickness=1)
+
+    label_next = LabelFrame(right_frame, text="NEXT", labelanchor = 'n', fg="white", font='Helvetica', background="#424949")
+    label_next.grid(row=0,column=0)
+
+    global grille_next_piece
+    global grille_graphique_next_piece
+    grille_next_piece = [[0 for _ in range(4)] for _ in range(4)]
+    grille_graphique_next_piece = [[0 for _ in range(4)] for _ in range(4)]
+
+
+    for i in range(4):
+        for j in range(4):
+            case = Frame(label_next, bg = "#424949", width = 40, height = 40)
+            case.grid(row = i+1, column = j)
+            grille_next_piece[i][j] = case
+
 
     global grille               ##Creation des grilles de jeu et graphique
     grille = cree_grille()
@@ -82,6 +99,8 @@ def affichage_grille():
 
     global next_piece            ##Creation de la pièce suivante
     next_piece = generer_piece()
+
+
 
     ## Fonctions d'affichage et d'interaction :
 
@@ -112,55 +131,30 @@ def affichage_grille():
         mise_a_jour_grille_graph()
 
 
-    right_frame = Toplevel()
-
-
-    right_frame.config(background="#424949", relief ='raised', highlightthickness=1)
-
-    label_next = LabelFrame(right_frame, text="NEXT", labelanchor = 'n', fg="white", font='Helvetica', background="#424949")
-    label_next.grid(row=0,column=0)
-
-    global grille_graphique2
-    global grille_provisoire2
-    grille_graphique2 = [[0 for _ in range(4)] for _ in range(4)]
-    grille_provisoire2 = [[0 for _ in range(4)] for _ in range(4)]
-
-
-    for i in range(4):
-        for j in range(4):
-            case = Frame(label_next, bg = "#424949", width = 40, height = 40)
-            case.grid(row = i+1, column = j)
-            grille_graphique2[i][j] = case
-
     def update_next_piece():
         global next_piece
-        global grille_graphique2
-        global grille_provisoire2
+        global grille_next_piece
+        global grille_graphique_next_piece
         forme=next_piece[2]
         for i in range(4):
             for j in range(4):
-                grille_provisoire2[i][j] = 0
+                grille_graphique_next_piece[i][j] = 0
         for c in coordonees(next_piece):
-             grille_provisoire2[c[0]][c[1]-3] = forme+1
+             grille_graphique_next_piece[c[0]][c[1] - 3] = forme + 1
         for i in range(4):
             for j in range(4):
-                grille_graphique2[i][j].config(bg = '#424949', bd = 0)
-                if grille_provisoire2[i][j]!=0:
-                    grille_graphique2[i][j].config(bg = piece_coleur[grille_provisoire2[i][j]],relief = 'groove',bd = 0.5)
+                grille_next_piece[i][j].config(bg ='#424949', bd = 0)
+                if grille_graphique_next_piece[i][j]!=0:
+                    grille_next_piece[i][j].config(bg = piece_coleur[grille_graphique_next_piece[i][j]], relief ='groove', bd = 0.5)
 
-    update_next_piece()
 
-    def game_over():
+    def game_over(): #Affiche 'GAME OVER' sur le cadre score/niveau/lignes
         Label(left_frame, text = 'GAME OVER', bg = 'grey', fg = 'red', font = ('Helvetica', 20, 'bold')).grid()
 
     def start_game():
-        global grille
-        global piece
-        global niveau
-        global nombre_lignes_supprimees
-        global score
-        global next_piece
+        global grille, piece, niveau, nombre_lignes_supprimees, score, next_piece
         niveau_initial = set_niveau.curselection()[0]
+        update_next_piece()
 
         if not test_fin_jeu(grille):
             mise_a_jour_grille_graph()
