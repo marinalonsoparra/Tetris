@@ -1,4 +1,4 @@
-from Tetrix.deplacement_tetris import *
+from deplacement_tetris import *
 
 
 def test_deplacement_droite():

@@ -1,5 +1,5 @@
-from Tetrix.fontion_jeu import *
-from Tetrix.deplacement_tetris import *
+from fonctions_jeu import *
+from deplacement_tetris import *
 
 def test_collision():
     grille=[[0 for i in range (0,10)] for j in range (0,22)]
