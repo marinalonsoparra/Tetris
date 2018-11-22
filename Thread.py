@@ -9,7 +9,7 @@ from grille_de_jeu import *
 from pieces_etats import *
 from fontion_jeu import *
 import time
-from affichage import *
+
 
 
 def display_grid() :

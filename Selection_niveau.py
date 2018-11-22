@@ -15,4 +15,3 @@ set_niveau.pack()
 
 
 frame.mainloop()
-
