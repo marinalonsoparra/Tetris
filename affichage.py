@@ -5,8 +5,8 @@ from fontion_jeu import *
 
 
 
-
 def affichage_grille():
+
 
     global score
     global nombre_lignes_supprimees
@@ -31,19 +31,7 @@ def affichage_grille():
     global niveau
     niveau = 0
 
-    global grille
-    grille = cree_grille()
-    global grille_graphique
-    grille_graphique = [[0 for _ in range(10)] for _ in range(22)]
 
-    for i in range(22):
-            for j in range(10):
-                case = Frame(top, bg = 'black', relief = 'raised', bd = 0.5, width = 30, height = 30)
-                case.grid(row = i, column = j)
-                grille_graphique[i][j] = case
-
-    global piece
-    piece = generer_piece()
 
     #Fenetre score
     left_frame = Toplevel()
@@ -78,8 +66,26 @@ def affichage_grille():
     label_vide = Label(left_frame, text="", background=frame_background_color)
     label_vide.grid(row=6,column=0)
 
-    ##Fonctions
-    def mise_a_jour_grille_graph():
+    global grille               ##Creation des grilles de jeu et graphique
+    grille = cree_grille()
+    global grille_graphique
+    grille_graphique = [[0 for _ in range(10)] for _ in range(22)]
+
+    for i in range(22):
+            for j in range(10):
+                case = Frame(top, bg = 'black', relief = 'raised', bd = 0.5, width = 30, height = 30)
+                case.grid(row = i, column = j)
+                grille_graphique[i][j] = case
+
+    global piece                 ##Creation de la premiere piece
+    piece = generer_piece()
+
+    global next_piece            ##Creation de la pièce suivante
+    next_piece = generer_piece()
+
+    ## Fonctions d'affichage et d'interaction :
+
+    def mise_a_jour_grille_graph(): #Met a jour la grille graphique
             global piece
             global grille_graphique
             global grille
@@ -92,15 +98,19 @@ def affichage_grille():
                 for j in range(10):
                     grille_graphique[i][j].config(bg = piece_coleur[grille_provisoire[i][j]])
 
-    def KeyPressed(event):
+    def KeyPressed(event): #Entree : evenement (appui sur une touche)
+                            #Deplace la piece en fonction de la touche appuyée
         global piece
         global grille_graphique
+        global score
         d = event.keysym
+        if d == 'Down':
+            score += 1
+            label_score_num.config(text = str(score))
+
         piece = deplacement_piece(grille, piece, d)
         mise_a_jour_grille_graph()
 
-    global next_piece
-    next_piece = generer_piece()
 
     right_frame = Toplevel()
 
