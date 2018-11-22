@@ -61,7 +61,7 @@ pieces_etat={0:etat_piece_0,1:etat_piece_1,2:etat_piece_2,3:etat_piece_3,4:etat_
 
 # deplace la piece vers la droite sur la grille
 #parametres: grille (list) (grille de 10*24,avec les piece deja jouees), piece: list (tableau de 4*4 ou 3*3 representant la piece)
-#renvoie: piece (list): nouvelle liste codant l'état et la disposition de la piece consideree
+#renvoie: piece (list): nouvelle liste codant l'etat et la disposition de la piece consideree
 def deplacement_droite(grille,piece):
     piece_copy=copy.deepcopy(piece)
     piece_copy[1]+=1
@@ -73,7 +73,7 @@ def deplacement_droite(grille,piece):
 
 # deplace la piece vers la gauche sur la grille
 #parametres: grille (list) (grille de 10*24,avec les piece deja jouees), piece: list (tableau de 4*4 ou 3*3 representant la piece)
-#renvoie: piece (list) (nouvelle liste codant l'état et la disposition de la piece consideree)
+#renvoie: piece (list) (nouvelle liste codant l'etat et la disposition de la piece consideree)
 def deplacement_gauche(grille,piece):
     piece_copy=copy.deepcopy(piece)
     piece_copy[1]-=1
@@ -86,7 +86,7 @@ def deplacement_gauche(grille,piece):
 
 # deplace la piece vers le bas sur la grille
 #parametres: grille (list) (grille de 10*24,avec les piece deja jouees), piece: list (tableau de 4*4 ou 3*3 representant la piece)
-#renvoie: piece (list) (nouvelle liste codant l'état et la disposition de la piece consideree)
+#renvoie: piece (list) (nouvelle liste codant l'etat et la disposition de la piece consideree)
 def deplacement_bas(grille,piece):
     piece_copy=copy.deepcopy(piece)
     piece_copy[0]+=1
@@ -111,7 +111,7 @@ def coordonees(piece):
 
 # donne la piece apres rotation de 90 degres
 #parametres: grille (list) (grille de 10*24,avec les piece deja jouees), piece: list (tableau de 4 entiers representant la piece)
-#renvoie: piece (list) (nouvelle liste codant l'état et la disposition de la piece consideree),
+#renvoie: piece (list) (nouvelle liste codant l'etat et la disposition de la piece consideree),
 # (si la piece depasse a gauche apres rotation, on la decale sur la droite pour la faire rentrer dans la grille)
 def rotation(grille,piece):
     piece[3]=(piece[3]+1)%4
