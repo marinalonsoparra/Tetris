@@ -28,5 +28,5 @@ def collision(piece,grille) :           ## Detecte si la piece entre en collisio
                 for k in Liste_piece :
                     grille_copy[k[0]][k[1]]+=piece[2]+1
                 return (True,grille_copy)
-    return (False,grille)           ##renvoie true ou false s'il y z collision avec la grille de jeu modifiee, et la nouvelle grille
+    return (False,grille)           ##renvoie true ou false s'il y a collision avec la grille de jeu modifiee, et la nouvelle grille
 
