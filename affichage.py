@@ -22,7 +22,6 @@ def affichage_grille():
     label_choix_niveau=LabelFrame(root, text="CHOOSE YOUR LEVEL:", bg = 'grey', fg = '#424949', font=font_tetrix)
     label_choix_niveau.grid()
     set_niveau= Listbox(label_choix_niveau, height=7, fg='white', bg='#424949', selectmode='SINGLE', selectbackground = 'grey',font=font_tetrix)
-    set_niveau.configure(justify=CENTER)
     set_niveau.insert(1,"Level 0")
     set_niveau.insert(2,"Level 1")
     set_niveau.insert(3,"Level 2")
