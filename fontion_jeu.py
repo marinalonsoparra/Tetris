@@ -12,7 +12,7 @@ def test_fin_jeu (grille) :
 
 
 def horloge(niveau) :
-    return int(max(0.1, 0.45 - niveau*0.45/10) * 1000)
+    return int(max(0.1, 0.45 - niveau*0.45/9) * 1000)
 
 #
 def collision(piece,grille) :           ## Detecte si la piece entre en collision avec la grille
