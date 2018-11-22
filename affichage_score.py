@@ -2,11 +2,12 @@ from tkinter import *
 from grille_de_jeu import *
 from pieces_etats import *
 from fontion_jeu import *
+import operator
 
 
+users_scores=[('a',10),('b',20),('c',30)]
 
 def affichage_grille():
-
 
     global score
     global nombre_lignes_supprimees
@@ -31,7 +32,19 @@ def affichage_grille():
     global niveau
     niveau = 0
 
+    global grille
+    grille = cree_grille()
+    global grille_graphique
+    grille_graphique = [[0 for _ in range(10)] for _ in range(22)]
 
+    for i in range(22):
+            for j in range(10):
+                case = Frame(top, bg = 'black', relief = 'raised', bd = 0.5, width = 30, height = 30)
+                case.grid(row = i, column = j)
+                grille_graphique[i][j] = case
+
+    global piece
+    piece = generer_piece()
 
     #Fenetre score
     left_frame = Toplevel()
@@ -66,26 +79,8 @@ def affichage_grille():
     label_vide = Label(left_frame, text="", background=frame_background_color)
     label_vide.grid(row=6,column=0)
 
-    global grille               ##Creation des grilles de jeu et graphique
-    grille = cree_grille()
-    global grille_graphique
-    grille_graphique = [[0 for _ in range(10)] for _ in range(22)]
-
-    for i in range(22):
-            for j in range(10):
-                case = Frame(top, bg = 'black', relief = 'raised', bd = 0.5, width = 30, height = 30)
-                case.grid(row = i, column = j)
-                grille_graphique[i][j] = case
-
-    global piece                 ##Creation de la premiere piece
-    piece = generer_piece()
-
-    global next_piece            ##Creation de la pièce suivante
-    next_piece = generer_piece()
-
-    ## Fonctions d'affichage et d'interaction :
-
-    def mise_a_jour_grille_graph(): #Met a jour la grille graphique
+    ##Fonctions
+    def mise_a_jour_grille_graph():
             global piece
             global grille_graphique
             global grille
@@ -98,19 +93,36 @@ def affichage_grille():
                 for j in range(10):
                     grille_graphique[i][j].config(bg = piece_coleur[grille_provisoire[i][j]])
 
-    def KeyPressed(event): #Entree : evenement (appui sur une touche)
-                            #Deplace la piece en fonction de la touche appuyée
+    def KeyPressed(event):
         global piece
         global grille_graphique
-        global score
         d = event.keysym
-        if d == 'Down':
-            score += 1
-            label_score_num.config(text = str(score))
-
         piece = deplacement_piece(grille, piece, d)
         mise_a_jour_grille_graph()
 
+    def display_score_board():
+        score_board_window=Toplevel(root,bg='grey')
+        score_board_window.geometry()
+        score_board=Message(score_board_window,bg='grey', fg='white', text="Score Board",font=("Times", "24", "bold"))
+        score_board.grid(row=0, column=1)
+        score_board.config(anchor=N)
+        users_scores.sort(key=operator.itemgetter(1))
+        n_1_user=Message(score_board_window,bg='grey', fg="#72f1f1",text= "First: "+str(users_scores[len(users_scores)-1][0]))
+        n_1_score=Message(score_board_window,bg='grey', fg="#72f1f1",text= users_scores[len(users_scores)-1][1])
+        n_2_score=Message(score_board_window,bg='grey',fg="#2046f0",text= users_scores[len(users_scores)-2][1])
+        n_2_user=Message(score_board_window,bg='grey',fg='#2046f0',text= "Second: "+str(users_scores[len(users_scores)-2][0]))
+        n_3_score=Message(score_board_window,bg='grey',fg="#e2972f",text= users_scores[len(users_scores)-3][1])
+        n_3_user=Message(score_board_window,bg='grey',fg="#e2972f",text= "Third: "+str(users_scores[len(users_scores)-3][0]))
+        n_1_user.grid(row=2,column=1)
+        n_1_score.grid(row=3,column=1)
+        n_2_user.grid(row=4,column=0)
+        n_2_score.grid(row=5,column=0)
+        n_3_user.grid(row=4,column=2)
+        n_3_score.grid(row=5,column=2)
+        score_board_window.grid(350*350)
+
+    global next_piece
+    next_piece = generer_piece()
 
     right_frame = Toplevel()
 
@@ -152,6 +164,8 @@ def affichage_grille():
 
     def game_over():
         Label(left_frame, text = 'GAME OVER', bg = 'grey', fg = 'red', font = ('Helvetica', 20, 'bold')).grid()
+        if user_name.get()!='':
+                users_scores.append((user_name.get(),score))
 
     def start_game():
         global grille
@@ -185,10 +199,17 @@ def affichage_grille():
             game_over()
 
 
+
     start = Button(root, text = 'START GAME', activebackground = "blue", command = start_game, bg = 'grey')
     start.grid(row = 2)
     quit_button = Button(root, text="QUIT", activebackground = "blue", fg="#8D021F",command=quit, bg = 'grey')
     quit_button.grid(row = 3)
+    user_name_title=Message(root, bg='grey', fg='white', text="Please enter a username if you want to save your score: ", anchor="e")
+    user_name=Entry(root, textvariable= StringVar)
+    Score_button=Button(root, text="Show Scoreboard", bg='grey', fg='white', relief= "raised", anchor="center",command=display_score_board)
+    user_name_title.grid(row=4)
+    user_name.grid(row=5)
+    Score_button.grid(row=6)
     top.bind('<Key>', KeyPressed)
     root.mainloop()
     top.mainloop()
