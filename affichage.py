@@ -105,9 +105,7 @@ def affichage_grille():
     ## Fonctions d'affichage et d'interaction :
 
     def mise_a_jour_grille_graph(): #Met a jour la grille graphique
-            global piece
-            global grille_graphique
-            global grille
+            global piece, grille_graphique, grille
 
             grille_provisoire = copy.deepcopy(grille)
             forme = piece[2]
@@ -132,9 +130,7 @@ def affichage_grille():
 
 
     def update_next_piece():
-        global next_piece
-        global grille_next_piece
-        global grille_graphique_next_piece
+        global next_piece, grille_next_piece, grille_graphique_next_piece
         forme=next_piece[2]
         for i in range(4):
             for j in range(4):
@@ -153,7 +149,11 @@ def affichage_grille():
 
     def start_game():
         global grille, piece, niveau, nombre_lignes_supprimees, score, next_piece
-        niveau_initial = set_niveau.curselection()[0]
+        if len(set_niveau.curselection()) == 0:
+            niveau_initial = 0
+        else:
+            niveau_initial = set_niveau.curselection()[0]
+
         update_next_piece()
 
         if not test_fin_jeu(grille):
