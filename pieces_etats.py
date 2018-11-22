@@ -55,7 +55,7 @@ etat_piece_6={0:[(0,0),(0,1),(1,1),(1,2)],\
 
 pieces_etat=[etat_piece_0,etat_piece_1,etat_piece_2,etat_piece_3,etat_piece_4,etat_piece_5,etat_piece_6]
 
-piece_coleur={0:'black',\
+piece_coleur={0:'#000000',\
               1:"#72f1f1",\
               2:"#2046f0",\
               3:"#e2972f",\
@@ -63,3 +63,4 @@ piece_coleur={0:'black',\
               5:"#7ff217",\
               6:"#a451f0",\
               7:"#e93f33"}
+
