@@ -8,6 +8,7 @@ from fontion_jeu import *
 
 def affichage_grille():
 
+
     global score
     global nombre_lignes_supprimees
     score = 0
@@ -95,7 +96,12 @@ def affichage_grille():
     def KeyPressed(event):
         global piece
         global grille_graphique
+        global score
         d = event.keysym
+        if d == 'Down':
+            score += 1
+            label_score_num.config(text = str(score))
+
         piece = deplacement_piece(grille, piece, d)
         mise_a_jour_grille_graph()
 
