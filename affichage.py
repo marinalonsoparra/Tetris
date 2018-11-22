@@ -117,8 +117,8 @@ def affichage_grille():
                 for j in range(10):
                     grille_graphique[i][j].config(bg = piece_coleur[grille_provisoire[i][j]])
 
-    def KeyPressed(event): #Entree : evenement (appui sur une touche)
-                            #Deplace la piece en fonction de la touche appuyée
+    def KeyPressed(event): # Parametre : evenement (appui sur une touche)
+                            # Deplace la piece en fonction de la touche appuyée
         global piece
         global grille_graphique
         global score
@@ -146,9 +146,9 @@ def affichage_grille():
                     grille_next_piece[i][j].config(bg = piece_coleur[grille_graphique_next_piece[i][j]], relief ='groove', bd = 0.5)
 
     def display_score_board():
-        # permet d'ouvrir la fenêtre des scores
-        # parametres: None
-        # renvoie: None
+        # Permet d'ouvrir la fenêtre des scores
+        # Parametres: None
+        # Renvoie: None
         score_board_window=Toplevel(root,bg='grey')
         score_board_window.geometry()
         score_board=Message(score_board_window,bg='grey', fg='white', text="Score Board",font=("Times", "24", "bold"))
