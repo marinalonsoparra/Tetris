@@ -1,5 +1,4 @@
 import pygame
-file=r"tetris_official_theme_song.mp3"
 
 
 def pmusic(file):                               ##Joue la musique de Tetris et attend la fin avant de sortir de la fonction
