@@ -2,7 +2,9 @@ from tkinter import *
 from grille_de_jeu import *
 from pieces_etats import *
 from fontion_jeu import *
+import operator
 
+users_scores=[('a',10),('b',20),('c',30)]
 
 
 def affichage_grille():
@@ -143,9 +145,36 @@ def affichage_grille():
                 if grille_graphique_next_piece[i][j]!=0:
                     grille_next_piece[i][j].config(bg = piece_coleur[grille_graphique_next_piece[i][j]], relief ='groove', bd = 0.5)
 
+    def display_score_board():
+        # permet d'ouvrir la fenêtre des scores
+        # parametres: None
+        # renvoie: None
+        score_board_window=Toplevel(root,bg='grey')
+        score_board_window.geometry()
+        score_board=Message(score_board_window,bg='grey', fg='white', text="Score Board",font=("Times", "24", "bold"))
+        score_board.grid(row=0, column=1)
+        score_board.config(anchor=N)
+        users_scores.sort(key=operator.itemgetter(1))
+        n_1_user=Message(score_board_window,bg='grey', fg="#72f1f1",text= "First: "+str(users_scores[len(users_scores)-1][0]))
+        n_1_score=Message(score_board_window,bg='grey', fg="#72f1f1",text= users_scores[len(users_scores)-1][1])
+        n_2_score=Message(score_board_window,bg='grey',fg="#2046f0",text= users_scores[len(users_scores)-2][1])
+        n_2_user=Message(score_board_window,bg='grey',fg='#2046f0',text= "Second: "+str(users_scores[len(users_scores)-2][0]))
+        n_3_score=Message(score_board_window,bg='grey',fg="#e2972f",text= users_scores[len(users_scores)-3][1])
+        n_3_user=Message(score_board_window,bg='grey',fg="#e2972f",text= "Third: "+str(users_scores[len(users_scores)-3][0]))
+        n_1_user.grid(row=2,column=1)
+        n_1_score.grid(row=3,column=1)
+        n_2_user.grid(row=4,column=0)
+        n_2_score.grid(row=5,column=0)
+        n_3_user.grid(row=4,column=2)
+        n_3_score.grid(row=5,column=2)
+        score_board_window.grid()
 
     def game_over(): #Affiche 'GAME OVER' sur le cadre score/niveau/lignes
         Label(left_frame, text = 'GAME OVER', bg = 'grey', fg = 'red', font = ('Helvetica', 20, 'bold')).grid()
+        if user_name.get()!='':
+                users_scores.append((user_name.get(),score))
+
+
 
     def start_game():
         global grille, piece, niveau, nombre_lignes_supprimees, score, next_piece
@@ -183,6 +212,12 @@ def affichage_grille():
     start.grid(row = 2)
     quit_button = Button(root, text="QUIT", activebackground = "blue", fg="#8D021F",command=quit, bg = 'grey')
     quit_button.grid(row = 3)
+    user_name_title=Message(root, bg='grey', fg='white', text="Please enter a username if you want to save your score: ", anchor="e")
+    user_name=Entry(root, textvariable= StringVar)
+    Score_button=Button(root, text="Show Scoreboard", bg='grey', fg='white', relief= "raised", anchor="center",command=display_score_board)
+    user_name_title.grid(row=4)
+    user_name.grid(row=5)
+    Score_button.grid(row=6)
     top.bind('<Key>', KeyPressed)
     root.mainloop()
     top.mainloop()
