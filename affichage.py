@@ -115,7 +115,7 @@ def affichage_grille():
         global grille_graphique
         global score
         d = event.keysym
-        if d == 'Down':
+        if d == 'Down' and not test_fin_jeu(grille):
             score += 1
             label_score_num.config(text = str(score))
 
