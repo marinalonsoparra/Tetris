@@ -1,4 +1,4 @@
-from tkinter import *
+from Tkinter import *
 from grille_de_jeu import *
 from pieces_etats import *
 from fontion_jeu import *
@@ -11,15 +11,18 @@ def affichage_grille():
 
     global score, nombre_lignes_supprimees, niveau
 
+    font_tetrix = ('Need Every Sound',16)
+    font_tetrix_2 = ('Need Every Sound',12)
     score = 0
     nombre_lignes_supprimees = 0
     root = Tk() # Fenetre start game/quit/...
     root.title("Tetris")
     top = Toplevel() # Fenetre grille de jeu
     root.config(bg = 'grey')
-    label_choix_niveau=LabelFrame(root, text="CHOOSE YOUR LEVEL:", bg = 'grey', fg = '#424949', font=("Helvetica", "10", "bold"))
+    label_choix_niveau=LabelFrame(root, text="CHOOSE YOUR LEVEL:", bg = 'grey', fg = '#424949', font=font_tetrix)
     label_choix_niveau.grid()
-    set_niveau= Listbox(label_choix_niveau, height=7, fg='white', bg='#424949', selectmode='SINGLE', selectbackground = 'grey')
+    set_niveau= Listbox(label_choix_niveau, height=7, fg='white', bg='#424949', selectmode='SINGLE', selectbackground = 'grey',font=font_tetrix)
+    set_niveau.configure(justify=CENTER)
     set_niveau.insert(1,"Level 0")
     set_niveau.insert(2,"Level 1")
     set_niveau.insert(3,"Level 2")
@@ -31,9 +34,9 @@ def affichage_grille():
 
     niveau = 0
 
-    ## Fenetre score/niveau/lignes effacées
+    ## Fenetre score/niveau/lignes effacees
     left_frame = Toplevel()
-    font_tetrix = 'Helvetica'
+
     width_num=10
     height_num=1
     number_background_color="#424949"
@@ -67,7 +70,7 @@ def affichage_grille():
 
     right_frame.config(background="#424949", relief ='raised', highlightthickness=1)
 
-    label_next = LabelFrame(right_frame, text="NEXT", labelanchor = 'n', fg="white", font='Helvetica', background="#424949")
+    label_next = LabelFrame(right_frame, text="NEXT", labelanchor = 'n', fg="white", font=font_tetrix, background="#424949")
     label_next.grid(row=0,column=0)
 
     global grille_next_piece
@@ -97,7 +100,7 @@ def affichage_grille():
     global piece                 # Creation de la premiere piece
     piece = generer_piece()
 
-    global next_piece            # Creation de la pièce suivante
+    global next_piece            # Creation de la piece suivante
     next_piece = generer_piece()
 
 
@@ -116,7 +119,7 @@ def affichage_grille():
                     grille_graphique[i][j].config(bg = piece_coleur[grille_provisoire[i][j]])
 
     def KeyPressed(event): # Parametre : evenement (appui sur une touche)
-                            # Deplace la piece en fonction de la touche appuyée
+                            # Deplace la piece en fonction de la touche appuyee
         global piece
         global grille_graphique
         global score
@@ -144,12 +147,12 @@ def affichage_grille():
                     grille_next_piece[i][j].config(bg = piece_coleur[grille_graphique_next_piece[i][j]], relief ='groove', bd = 0.5)
 
     def display_score_board(): # Affiche le tableau des scores
-        # Permet d'ouvrir la fenêtre des scores
+        # Permet d'ouvrir la fenetre des scores
         # Parametres: None
         # Renvoie: None
         score_board_window=Toplevel(root,bg='grey')
         score_board_window.geometry()
-        score_board=Message(score_board_window,bg='grey', fg='white', text="Score Board",font=("Times", "24", "bold"))
+        score_board=Message(score_board_window,bg='grey', fg='white', text="Score Board",font=font_tetrix)
         score_board.grid(row=0, column=1)
         score_board.config(anchor=N)
         users_scores.sort(key=operator.itemgetter(1))
@@ -168,7 +171,7 @@ def affichage_grille():
         score_board_window.grid()
 
     def game_over(): #Affiche 'GAME OVER' sur le cadre score/niveau/lignes
-        Label(left_frame, text = 'GAME OVER', bg = 'grey', fg = 'red', font = ('Helvetica', 20, 'bold')).grid()
+        Label(left_frame, text = 'GAME OVER', bg = 'grey', fg = 'red', font =font_tetrix).grid()
         if user_name.get()!='':
                 users_scores.append((user_name.get(),score))
 
@@ -206,13 +209,13 @@ def affichage_grille():
             game_over()
 
 
-    start = Button(root, text = 'START GAME', activebackground = "blue", command = start_game, bg = 'grey')
+    start = Button(root, text = 'START GAME', activebackground = "blue", command = start_game, bg = 'grey',font=font_tetrix)
     start.grid(row = 2)
-    quit_button = Button(root, text="QUIT", activebackground = "blue", fg="#8D021F",command=quit, bg = 'grey')
+    quit_button = Button(root, text="QUIT", activebackground = "blue", fg="#8D021F",command=quit, bg = 'grey',font=font_tetrix)
     quit_button.grid(row = 3)
-    user_name_title=Message(root, bg='grey', fg='white', text="Please enter a username if you want to save your score: ", anchor="e")
+    user_name_title=Message(root, bg='grey', fg='white', text="Please enter a username if you want to save your score: ", anchor="e",font=font_tetrix_2)
     user_name=Entry(root, textvariable= StringVar)
-    Score_button=Button(root, text="Show Scoreboard", bg='grey', fg='white', relief= "raised", anchor="center",command=display_score_board)
+    Score_button=Button(root, text="Show Scoreboard", bg='grey', fg='black', relief= "raised", anchor="center",command=display_score_board,font=font_tetrix)
     user_name_title.grid(row=4)
     user_name.grid(row=5)
     Score_button.grid(row=6)
