@@ -191,7 +191,6 @@ class display(Thread):
                     else :
                         grille_graphique2[i][j].config(bg = piece_coleur[0],relief = 'groove',bd = 0.5)
 
-
         def start_game():
             global grille
             global piece
@@ -222,7 +221,6 @@ class display(Thread):
 
                 top.after(horloge(niveau), start_game)
             else:
-                pygame.mixer.stop()
                 print('game over')
 
 
