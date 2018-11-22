@@ -12,8 +12,7 @@ def test_fin_jeu (grille) :
 
 
 def horloge(niveau) :
-    return int(max(0.2, 0.5 - niveau*0.5/7) * 1000)
-
+    return int(max(0.1, 0.45 - niveau*0.45/10) * 1000)
 
 #
 def collision(piece,grille) :           ## Detecte si la piece entre en collision avec la grille
@@ -30,3 +29,4 @@ def collision(piece,grille) :           ## Detecte si la piece entre en collisio
                     grille_copy[k[0]][k[1]]+=piece[2]+1
                 return (True,grille_copy)
     return (False,grille)           ##renvoie true ou false s'il y z collision avec la grille de jeu modifiee, et la nouvelle grille
+
