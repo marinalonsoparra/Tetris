@@ -107,9 +107,7 @@ def affichage_grille():
     ## Fonctions d'affichage et d'interaction :
 
     def mise_a_jour_grille_graph(): #Met a jour la grille graphique
-            global piece
-            global grille_graphique
-            global grille
+            global piece, grille_graphique, grille
 
             grille_provisoire = copy.deepcopy(grille)
             forme = piece[2]
@@ -119,8 +117,8 @@ def affichage_grille():
                 for j in range(10):
                     grille_graphique[i][j].config(bg = piece_coleur[grille_provisoire[i][j]])
 
-    def KeyPressed(event): #Entree : evenement (appui sur une touche)
-                            #Deplace la piece en fonction de la touche appuyée
+    def KeyPressed(event): # Parametre : evenement (appui sur une touche)
+                            # Deplace la piece en fonction de la touche appuyée
         global piece
         global grille_graphique
         global score
@@ -134,9 +132,7 @@ def affichage_grille():
 
 
     def update_next_piece():
-        global next_piece
-        global grille_next_piece
-        global grille_graphique_next_piece
+        global next_piece, grille_next_piece, grille_graphique_next_piece
         forme=next_piece[2]
         for i in range(4):
             for j in range(4):
@@ -150,9 +146,9 @@ def affichage_grille():
                     grille_next_piece[i][j].config(bg = piece_coleur[grille_graphique_next_piece[i][j]], relief ='groove', bd = 0.5)
 
     def display_score_board():
-        # permet d'ouvrir la fenêtre des scores
-        # parametres: None
-        # renvoie: None
+        # Permet d'ouvrir la fenêtre des scores
+        # Parametres: None
+        # Renvoie: None
         score_board_window=Toplevel(root,bg='grey')
         score_board_window.geometry()
         score_board=Message(score_board_window,bg='grey', fg='white', text="Score Board",font=("Times", "24", "bold"))
@@ -182,7 +178,11 @@ def affichage_grille():
 
     def start_game():
         global grille, piece, niveau, nombre_lignes_supprimees, score, next_piece
-        niveau_initial = set_niveau.curselection()[0]
+        if len(set_niveau.curselection()) == 0:
+            niveau_initial = 0
+        else:
+            niveau_initial = set_niveau.curselection()[0]
+
         update_next_piece()
 
         if not test_fin_jeu(grille):

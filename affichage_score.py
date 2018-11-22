@@ -222,3 +222,23 @@ def affichage_grille():
 
 
 affichage_grille()
+
+def Save() :
+        ###Fonction pour sauvegarder la grille
+        file=open("Save.txt","w+")
+        file.seek(0)
+        file.truncate()
+        file.write(str(game_grid))
+    def Load() :
+        ### Fonction pour charger la sauvegarde
+        global game_grid
+        file=open("Save.txt","r+")
+        game_grid=str_to_list(file.read())
+        display_and_update_graphical_grid()
+
+    def Cancel() :
+        ### Fonction pour annuler le dernier coup joué
+        global game_grid
+        global game_grid_copy
+        game_grid= copy.deepcopy(game_grid_copy)
+        display_and_update_graphical_grid()
