@@ -1,4 +1,4 @@
-from Tkinter import *
+from tkinter import *
 from grille_de_jeu import *
 from pieces_etats import *
 from fontion_jeu import *
@@ -9,7 +9,7 @@ users_scores=[('a',10),('b',20),('c',30)]
 
 def affichage_grille():
 
-    global score, nombre_lignes_supprimees, niveau
+    global score, nombre_lignes_supprimees, niveau, grille_next_piece, grille_graphique_next_piece, grille, grille_graphique, piece, next_piece
 
     font_tetrix = ('Need Every Sound',16)
     font_tetrix_2 = ('Need Every Sound',12)
@@ -32,9 +32,11 @@ def affichage_grille():
     set_niveau.insert(7,"Level 6")
     set_niveau.grid()
 
+    ## Fenetre score/niveau/lignes effacées
     niveau = 0
+    score = 0
+    nombre_lignes_supprimees = 0
 
-    ## Fenetre score/niveau/lignes effacees
     left_frame = Toplevel()
 
     width_num=10
@@ -67,17 +69,13 @@ def affichage_grille():
 
     ## Fenetre next piece
     right_frame = Toplevel()
-
     right_frame.config(background="#424949", relief ='raised', highlightthickness=1)
 
     label_next = LabelFrame(right_frame, text="NEXT", labelanchor = 'n', fg="white", font=font_tetrix, background="#424949")
     label_next.grid(row=0,column=0)
 
-    global grille_next_piece
-    global grille_graphique_next_piece
     grille_next_piece = [[0 for _ in range(4)] for _ in range(4)]
     grille_graphique_next_piece = [[0 for _ in range(4)] for _ in range(4)]
-
 
     for i in range(4):
         for j in range(4):
@@ -85,10 +83,8 @@ def affichage_grille():
             case.grid(row = i+1, column = j)
             grille_next_piece[i][j] = case
 
-
-    global grille               # Creation des grilles de jeu et graphique
+    ## Creation des grilles de jeu et graphique
     grille = cree_grille()
-    global grille_graphique
     grille_graphique = [[0 for _ in range(10)] for _ in range(22)]
 
     for i in range(22):
@@ -97,13 +93,9 @@ def affichage_grille():
                 case.grid(row = i, column = j)
                 grille_graphique[i][j] = case
 
-    global piece                 # Creation de la premiere piece
-    piece = generer_piece()
 
-    global next_piece            # Creation de la piece suivante
-    next_piece = generer_piece()
-
-
+    piece = generer_piece()     # Creation de la premiere piecE
+    next_piece = generer_piece()    # Creation de la pièce suivante
 
     ## Fonctions d'affichage et d'interaction :
 
@@ -130,7 +122,6 @@ def affichage_grille():
 
         piece = deplacement_piece(grille, piece, d)
         mise_a_jour_grille_graph()
-
 
     def update_next_piece(): # Met a jour la grille graphique de la prochaine piece
         global next_piece, grille_next_piece, grille_graphique_next_piece
@@ -175,9 +166,7 @@ def affichage_grille():
         if user_name.get()!='':
                 users_scores.append((user_name.get(),score))
 
-
-
-    def start_game():
+    def start_game(): #Fais tourner le jeu, fait descendre la piece automatiquement
         global grille, piece, niveau, nombre_lignes_supprimees, score, next_piece
         if len(set_niveau.curselection()) == 0:
             niveau_initial = 0
@@ -224,7 +213,6 @@ def affichage_grille():
     top.mainloop()
     left_frame.mainloop()
     right_frame.mainloop()
-
 
 
 affichage_grille()
