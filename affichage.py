@@ -140,6 +140,7 @@ def affichage_grille():
         # Permet d'ouvrir la fenêtre des scores
         # Parametres: None
         # Renvoie: None
+        global n_1_score, n_2_score, n_3_score
         score_board_window=Toplevel(root,bg='grey')
         score_board_window.geometry()
         score_board=Message(score_board_window,bg='grey', fg='white', text="Score Board",font=font_tetrix)
@@ -161,10 +162,18 @@ def affichage_grille():
         n_3_score.grid(row=5,column=2)
         score_board_window.grid()
 
+    def update_score_board():
+        global n_1_score, n_2_score, n_3_score
+        users_scores=Load()
+        n_1_score.config(text = users_scores[len(users_scores)-1][1])
+        n_2_score.config(text = users_scores[len(users_scores)-2][1])
+        n_3_score.config(text = users_scores[len(users_scores)-3][1])
+
     def game_over(): #Affiche 'GAME OVER' sur le cadre score/niveau/lignes
         Label(left_frame, text = 'GAME OVER', bg = 'grey', fg = 'red', font = font_tetrix).grid()
         if user_name.get()!='':
                 Save_user_score()
+        update_score_board()
 
     def Save_user_score() :
         ###Fonction pour sauvegarder la grille
@@ -183,7 +192,7 @@ def affichage_grille():
             user=""
             i=row.index(" : ")
             user=row[0:i]
-            score=int(row[i+3:len(row)-2])
+            score=int(row[i+3:len(row)-1])
             list_users_scores.append((user,score))
         file.close()
         return list_users_scores
