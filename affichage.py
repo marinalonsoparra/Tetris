@@ -165,6 +165,7 @@ def affichage_grille():
     def update_score_board():
         global n_1_score, n_2_score, n_3_score, n_1_user, n_2_user, n_3_user
         users_scores=Load()
+        users_scores.sort(key=operator.itemgetter(1))
         n_1_user.config(text = "First: "+str(users_scores[len(users_scores)-1][0]))
         n_1_score.config(text = users_scores[len(users_scores)-1][1])
         n_2_user.config(text =  "Second: "+str(users_scores[len(users_scores)-2][0]))
