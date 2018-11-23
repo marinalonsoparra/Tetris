@@ -11,7 +11,6 @@ from fonctions_jeu import *
 import time
 import operator
 
-users_scores=[('a',10),('b',20),('c',30)]
 
 def display_grid() :
     global top
@@ -154,7 +153,7 @@ class display(Thread):
 
         for i in range(22):
                 for j in range(10):
-                    case = Frame(top, bg = 'black', relief = 'raised', bd = 0.5, width = 30, height = 30)
+                    case = Frame(top, bg = 'black', relief = 'raised', bd = 1.5, width = 30, height = 30)
                     case.grid(row = i, column = j)
                     grille_graphique[i][j] = case
 
@@ -203,7 +202,7 @@ class display(Thread):
                 for j in range(4):
                     grille_next_piece[i][j].config(bg ='#424949', bd = 0)
                     if grille_graphique_next_piece[i][j]!=0:
-                        grille_next_piece[i][j].config(bg = piece_coleur[grille_graphique_next_piece[i][j]], relief ='groove', bd = 0.5)
+                        grille_next_piece[i][j].config(bg = piece_coleur[grille_graphique_next_piece[i][j]], relief ='raised', bd = 1.5)
 
         def display_score_board(): # Affiche le tableau des scores
             # Permet d'ouvrir la fenêtre des scores
