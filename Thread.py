@@ -11,8 +11,6 @@ from fonctions_jeu import *
 import time
 import operator
 
-users_scores=[('a',10),('b',20),('c',30)]
-
 def display_grid() :
     global top
     top = Tk()
