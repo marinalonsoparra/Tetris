@@ -1,63 +1,8 @@
 
 import copy
 
-#ensemble de dictionnaires decrivant l'ensemble des pieces disponible et les coordonnees de leurs quatres cases dans un carre de 4*4 ou 3*3, cf etat tetris
-# * * * *
+from pieces_etats import*
 
-
-# * * * *
-
-etat_piece_0={0:[(1,0),(1,1),(1,2),(1,3)],\
-              1:[(0,2),(1,2),(2,2),(3,2)],\
-              2:[(2,0),(2,1),(2,2),(2,3)],\
-              3:[(0,1),(1,1),(2,1),(3,1)]}
-
-
-# *
-# * * *
-etat_piece_1={0:[(0,0),(1,0),(1,1),(1,2)],\
-              1:[(0,1),(0,2),(1,1),(2,1)],\
-              2:[(1,0),(1,1),(1,2),(2,2)],\
-              3:[(0,1),(1,1),(2,1),(2,0)]}
-
-#     *
-# * * *
-etat_piece_2={0:[(0,2),(1,0),(1,1),(1,2)],\
-              1:[(0,1),(1,1),(2,1),(2,2)],\
-              2:[(1,0),(1,1),(1,2),(2,0)],\
-              3:[(0,0),(0,1),(1,1),(2,1)]}
-
-# * *
-# * *
-etat_piece_3={0:[(0,1),(0,2),(1,1),(1,2)],\
-              1:[(0,1),(0,2),(1,1),(1,2)],\
-              2:[(0,1),(0,2),(1,1),(1,2)],\
-              3:[(0,1),(0,2),(1,1),(1,2)]}
-
-#   * *
-# * *
-etat_piece_4={0:[(0,1),(0,2),(1,0),(1,1)],\
-              1:[(0,1),(1,1),(1,2),(2,2)],\
-              2:[(1,1),(1,2),(2,0),(2,1)],\
-              3:[(0,0),(1,0),(1,1),(2,1)]}
-
-#   *
-# * * *
-etat_piece_5={0:[(0,1),(1,0),(1,1),(1,2)],\
-              1:[(0,1),(1,1),(1,2),(2,1)],\
-              2:[(1,0),(1,1),(1,2),(2,1)],\
-              3:[(0,1),(1,0),(1,1),(2,1)]}
-
-#   * *
-#     * *
-etat_piece_6={0:[(0,0),(0,1),(1,1),(1,2)],\
-              1:[(0,2),(1,1),(1,2),(2,1)],\
-              2:[(1,0),(1,1),(2,1),(2,2)],\
-              3:[(0,1),(1,0),(1,1),(2,0)]}
-
-#Le dictionnaire regroupant les dictionnaires
-pieces_etat={0:etat_piece_0,1:etat_piece_1,2:etat_piece_2,3:etat_piece_3,4:etat_piece_4,5:etat_piece_5,6:etat_piece_6}
-###piece=[y,x,forme,etat]
 
 # deplace la piece vers la droite sur la grille
 #parametres: grille (list) (grille de 10*24,avec les piece deja jouees), piece: list (tableau de 4*4 ou 3*3 representant la piece)
