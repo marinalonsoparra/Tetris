@@ -140,7 +140,7 @@ def affichage_grille():
         # Permet d'ouvrir la fenêtre des scores
         # Parametres: None
         # Renvoie: None
-        global n_1_score, n_2_score, n_3_score
+        global n_1_score, n_2_score, n_3_score, n_1_user, n_2_user, n_3_user
         score_board_window=Toplevel(root,bg='grey')
         score_board_window.geometry()
         score_board=Message(score_board_window,bg='grey', fg='white', text="Score Board",font=font_tetrix)
@@ -148,12 +148,12 @@ def affichage_grille():
         score_board.config(anchor=N)
         users_scores=Load()
         users_scores.sort(key=operator.itemgetter(1))
-        n_1_user=Message(score_board_window,bg='grey', fg="#72f1f1",text= "First: "+str(users_scores[len(users_scores)-1][0]),font=font_tetrix_2)
-        n_1_score=Message(score_board_window,bg='grey', fg="#72f1f1",text= users_scores[len(users_scores)-1][1],font=font_tetrix_2)
-        n_2_score=Message(score_board_window,bg='grey',fg="#2046f0",text= users_scores[len(users_scores)-2][1],font=font_tetrix_2)
-        n_2_user=Message(score_board_window,bg='grey',fg='#2046f0',text= "Second: "+str(users_scores[len(users_scores)-2][0]),font=font_tetrix_2)
-        n_3_score=Message(score_board_window,bg='grey',fg="#e2972f",text= users_scores[len(users_scores)-3][1],font=font_tetrix_2)
-        n_3_user=Message(score_board_window,bg='grey',fg="#e2972f",text= "Third: "+str(users_scores[len(users_scores)-3][0]), font= font_tetrix)
+        n_1_user=Message(score_board_window,bg='grey', fg="#EFD807",text= "First: "+str(users_scores[len(users_scores)-1][0]),font=font_tetrix_2)
+        n_1_score=Message(score_board_window,bg='grey', fg="#EFD807",text= users_scores[len(users_scores)-1][1],font=font_tetrix_2)
+        n_2_score=Message(score_board_window,bg='grey',fg="#677179",text= users_scores[len(users_scores)-2][1],font=font_tetrix_2)
+        n_2_user=Message(score_board_window,bg='grey',fg='#677179',text= "Second: "+str(users_scores[len(users_scores)-2][0]),font=font_tetrix_2)
+        n_3_score=Message(score_board_window,bg='grey',fg="#614E1A",text= users_scores[len(users_scores)-3][1],font=font_tetrix_2)
+        n_3_user=Message(score_board_window,bg='grey',fg="#614E1A",text= "Third: "+str(users_scores[len(users_scores)-3][0]), font= font_tetrix)
         n_1_user.grid(row=2,column=1)
         n_1_score.grid(row=3,column=1)
         n_2_user.grid(row=4,column=0)
@@ -163,10 +163,13 @@ def affichage_grille():
         score_board_window.grid()
 
     def update_score_board():
-        global n_1_score, n_2_score, n_3_score
+        global n_1_score, n_2_score, n_3_score, n_1_user, n_2_user, n_3_user
         users_scores=Load()
+        n_1_user.config(text = "First: "+str(users_scores[len(users_scores)-1][0]))
         n_1_score.config(text = users_scores[len(users_scores)-1][1])
+        n_2_user.config(text =  "Second: "+str(users_scores[len(users_scores)-2][0]))
         n_2_score.config(text = users_scores[len(users_scores)-2][1])
+        n_3_user.config(text = "Third: "+str(users_scores[len(users_scores)-3][0]))
         n_3_score.config(text = users_scores[len(users_scores)-3][1])
 
     def game_over(): #Affiche 'GAME OVER' sur le cadre score/niveau/lignes
@@ -188,7 +191,6 @@ def affichage_grille():
         list_users_scores=[('',0),('',0),('',0)]
         file=open("users_scores.txt","r+")
         for row in file:
-            print(row)
             user=""
             i=row.index(" : ")
             user=row[0:i]
